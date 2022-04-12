@@ -1,0 +1,35 @@
+{% extends 'base.back.html.twig' %}
+{% block dashboard %}
+    <li class="menu-item active">
+        <a href="{{ asset ('back/afficheA') }}" class="menu-link">
+            <i class="menu-icon tf-icons bx bx-home-circle"></i>
+            <div data-i18n="Analytics">Gestion abonnement</div>
+        </a>
+        <a href="{{ asset ('back/ajoutA') }}" class="menu-link">
+            <i class="menu-icon tf-icons bx bx-home-circle"></i>
+            <div data-i18n="Analytics">Ajouter un abonnement</div>
+        </a>
+        <a href="{{ asset ('back/afficheC') }}" class="menu-link">
+            <i class="menu-icon tf-icons bx bx-home-circle"></i>
+            <div data-i18n="Analytics">Gestion Compt</div>
+        </a>
+        <a href="{{ asset ('back/ajoutC') }}" class="menu-link">
+            <i class="menu-icon tf-icons bx bx-home-circle"></i>
+            <div data-i18n="Analytics">Ajouter un Compte</div>
+        </a>
+    </li>
+{% endblock %}
+{% block content  %}
+    {% form_theme formC 'bootstrap_4_layout.html.twig' %}
+    <div class="templatemo-content-container">
+        <div class="templatemo-content-widget white-bg">
+
+            <h2 class="margin-bottom-10">modifier le  Compte</h2>
+
+            {{form_start(formC,{'attr' :{'novalidate':'novalidate'}})}}
+
+            {{ form_end(formC) }}
+
+        </div>
+    </div>
+{% endblock %}

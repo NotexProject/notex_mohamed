@@ -1,0 +1,79 @@
+{% extends 'base.front.html.twig' %}
+
+{% block body %}
+
+    <section id="blog" class="blog"  >
+
+        <div class="container" data-aos="fade-up" >
+
+                <div class="col-lg-8"  >
+
+                    <div class="row gy-4 posts-list" >
+                        {% for a in abonnement %}
+                        <div class="col-lg-7" >
+
+                            <article class="d-flex flex-column">
+
+                                <div class="post-img">
+                                    <img src="{{ asset ('uploads/images/' ~ a.image) }}"  style="width:500px ; height:500px" alt="" class="img-fluid">
+                                </div>
+
+                                <h2 class="title">
+                                    <a href="blog-details.html">{{ a.nomabonnement }}</a>
+                                </h2>
+
+                                <div class="meta-top">
+                                    <ul>
+                                        <p>
+                                            {{ a.price }}
+                                        </p>
+
+                                    </ul>
+                                </div>
+
+                                <div class="content">
+                                    <p>
+                                        {{ a.description }}
+                                    </p>
+                                </div>
+
+
+
+                            </article>
+
+                        </div   >
+                        {% endfor %}
+
+                         <!-- End post list item -->
+
+                        <!-- End post list item -->
+
+                        <!-- End post list item -->
+
+                        <!-- End post list item -->
+
+                        <!-- End post list item -->
+
+                        <!-- End post list item -->
+
+                    </div     >
+
+                    <!-- End blog posts list -->
+
+
+                </div      >
+
+
+
+
+
+
+        </div >
+
+    </section  >
+
+
+{% endblock %}
+
+
+

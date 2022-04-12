@@ -1,0 +1,53 @@
+{% extends 'base.back.html.twig' %}
+{% block dashboard %}
+    <li class="menu-item active">
+        <a href="{{ asset ('back/afficheA') }}" class="menu-link">
+            <i class="menu-icon tf-icons bx bx-home-circle"></i>
+            <div data-i18n="Analytics">Gestion abonnement</div>
+        </a>
+        <a href="{{ asset ('back/ajoutA') }}" class="menu-link">
+            <i class="menu-icon tf-icons bx bx-home-circle"></i>
+            <div data-i18n="Analytics">Ajouter un abonnement</div>
+        </a>
+        <a href="{{ asset ('back/afficheC') }}" class="menu-link">
+            <i class="menu-icon tf-icons bx bx-home-circle"></i>
+            <div data-i18n="Analytics">Gestion Compt</div>
+        </a>
+        <a href="{{ asset ('back/ajoutC') }}" class="menu-link">
+            <i class="menu-icon tf-icons bx bx-home-circle"></i>
+            <div data-i18n="Analytics">Ajouter un Compte</div>
+        </a>
+    </li>
+{% endblock %}
+{% block content  %}
+    <div class="card">
+        <h5 class="card-header">Abonnements</h5>
+        <div class="table-responsive text-nowrap">
+            <table class="table">
+                <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Nom abonnement</th>
+                    <th>description</th>
+                    <th>prix</th>
+                    <th>image</th>
+                    <th>actions</th>
+                </tr>
+                </thead>
+                <tbody class="table-border-bottom-0">
+                <tr {% for a in abonnement %}>
+                    <td> {{ a.ida }}</td>
+                    <td> {{ a.nomabonnement }}</td>
+                    <td> {{ a.description }}</td>
+                    <td> {{ a.price }}</td>
+                    <td> <img src="{{ asset ('uploads/images/' ~ a.image) }}"  style="width:80px ; height:80px" /></td>
+                    <td> <a href="{{ path('delete',{'ida':a.ida}) }}"> Delete</a> <a href="{{ path('update',{'ida':a.ida}) }}"> update</a> </td>
+                </tr {% endfor %}>
+
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+{% endblock %}

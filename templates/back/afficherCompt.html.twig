@@ -1,0 +1,58 @@
+{% extends 'base.back.html.twig' %}
+{% block dashboard %}
+    <li class="menu-item active">
+        <a href="{{ asset ('back/afficheA') }}" class="menu-link">
+            <i class="menu-icon tf-icons bx bx-home-circle"></i>
+            <div data-i18n="Analytics">Gestion abonnement</div>
+        </a>
+        <a href="{{ asset ('back/ajoutA') }}" class="menu-link">
+            <i class="menu-icon tf-icons bx bx-home-circle"></i>
+            <div data-i18n="Analytics">Ajouter un abonnement</div>
+        </a>
+        <a href="{{ asset ('back/afficheC') }}" class="menu-link">
+            <i class="menu-icon tf-icons bx bx-home-circle"></i>
+            <div data-i18n="Analytics">Gestion Compt</div>
+        </a>
+        <a href="{{ asset ('back/ajoutC') }}" class="menu-link">
+            <i class="menu-icon tf-icons bx bx-home-circle"></i>
+            <div data-i18n="Analytics">Ajouter un Compte</div>
+        </a>
+    </li>
+{% endblock %}
+{% block content  %}
+    <div class="card">
+        <h5 class="card-header">CompteS</h5>
+        <div class="table-responsive text-nowrap">
+            <table class="table">
+                <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>fullname</th>
+                    <th>email</th>
+                    <th>birth</th>
+                    <th>country</th>
+                    <th>adress</th>
+                    <th>role</th>
+                    <th>action</th>
+                </tr>
+                </thead>
+                <tbody class="table-border-bottom-0">
+                <tr {% for a in compt %}>
+                    <td> {{ a.idcompt }}</td>
+                    <td> {{ a.fullname }}</td>
+                    <td> {{ a.email }}</td>
+                    <td> {{a.birth|date('d-m-Y')}}</td>
+                    <td> {{ a.country }}</td>
+                    <td> {{ a.adress }}</td>
+                    <td> {{ a.role }}</td>
+
+                    <td> <a href="{{ path('deleteC',{'idcompt':a.idcompt}) }}"> Delete</a> <a href="{{ path('upc',{'idcompt':a.idcompt}) }}"> update</a> </td>
+                </tr {% endfor %}>
+
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+{% endblock %}

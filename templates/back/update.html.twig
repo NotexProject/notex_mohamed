@@ -1,0 +1,15 @@
+{% extends 'base.back.html.twig' %}
+
+{% block content  %}
+    {% form_theme form 'bootstrap_4_layout.html.twig' %}
+    <div class="templatemo-content-container">
+        <div class="templatemo-content-widget white-bg">
+
+            <h2 class="margin-bottom-10">Modification de  l' Abonnement</h2>
+            {{ form_start(form)}}
+
+            {{ form_end(form) }}
+
+        </div>
+    </div>
+{% endblock %}
