@@ -1,16 +1,21 @@
 {% extends 'base.front.html.twig' %}
 
+{% block button  %}
+    <a class="btn-getstarted scrollto" href="app_logout">Logout</a>
+    <a class="btn-getstarted scrollto" href="afficheA">Administration</a>
+
+{% endblock %}
+
 {% block body %}
 
     <section id="blog" class="blog"  >
 
         <div class="container" data-aos="fade-up" >
 
-                <div class="col-lg-8"  >
+                <div class="row" >
+                         {% for a in abonnement %}
 
-                    <div class="row gy-4 posts-list" >
-                        {% for a in abonnement %}
-                        <div class="col-lg-7" >
+                        <div class="col-lg-4" >
 
                             <article class="d-flex flex-column">
 
@@ -43,7 +48,7 @@
 
                         </div   >
                         {% endfor %}
-
+                </div>
                          <!-- End post list item -->
 
                         <!-- End post list item -->
@@ -61,14 +66,7 @@
                     <!-- End blog posts list -->
 
 
-                </div      >
 
-
-
-
-
-
-        </div >
 
     </section  >
 

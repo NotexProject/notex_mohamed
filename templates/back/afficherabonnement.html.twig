@@ -1,19 +1,47 @@
 {% extends 'base.back.html.twig' %}
+
+{% block user %}
+ <ul class="navbar-nav flex-row align-items-center ms-auto">
+                <!-- Place this tag where you want the button to render. -->
+                <li class="nav-item lh-1 me-3">
+                    <a
+                            class="github-button"
+                            href={{ path("app_logout") }}
+                            data-icon="octicon-star"
+                            data-size="large"
+                            data-show-count="true"
+                            aria-label="Star themeselection/sneat-html-admin-template-free on GitHub"
+                    >Logout</a
+                    >
+                </li>
+
+                  <li class="nav-item lh-1 me-3">
+                    <a
+                            class="github-button"
+                            href={{ path("FrontafficheA") }}
+                            data-icon="octicon-star"
+                            data-size="large"
+                            data-show-count="true"
+                            aria-label="Star themeselection/sneat-html-admin-template-free on GitHub"
+                    >LES ABONNEMENTS</a
+                    >
+                </li>
+{% endblock %}
 {% block dashboard %}
     <li class="menu-item active">
-        <a href="{{ asset ('back/afficheA') }}" class="menu-link">
+        <a href="{{ asset ('admin/afficheA') }}" class="menu-link">
             <i class="menu-icon tf-icons bx bx-home-circle"></i>
             <div data-i18n="Analytics">Gestion abonnement</div>
         </a>
-        <a href="{{ asset ('back/ajoutA') }}" class="menu-link">
+        <a href="{{ asset ('admin/ajoutA') }}" class="menu-link">
             <i class="menu-icon tf-icons bx bx-home-circle"></i>
             <div data-i18n="Analytics">Ajouter un abonnement</div>
         </a>
-        <a href="{{ asset ('back/afficheC') }}" class="menu-link">
+        <a href="{{ asset ('admin/afficheC') }}" class="menu-link">
             <i class="menu-icon tf-icons bx bx-home-circle"></i>
             <div data-i18n="Analytics">Gestion Compt</div>
         </a>
-        <a href="{{ asset ('back/ajoutC') }}" class="menu-link">
+        <a href="{{ asset ('admin/ajoutC') }}" class="menu-link">
             <i class="menu-icon tf-icons bx bx-home-circle"></i>
             <div data-i18n="Analytics">Ajouter un Compte</div>
         </a>

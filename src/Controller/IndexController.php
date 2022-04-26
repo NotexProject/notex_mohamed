@@ -13,26 +13,27 @@ use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
+
+
+/**
+ *
+ * @Route("/admin")
+ */
+
 
 class IndexController extends AbstractController
 {
     //***********************************************abonnement back et front************************************************************
-    /**
-     * @Route("/", name="app_index")
-     */
-    public function index(): Response
-    {
-        return $this->render('base.front.html.twig', [
-            'controller_name' => 'IndexController',
-        ]);
-    }
+
+
 
 
 
     /**
      * @param AbonnementRepository $repo
      * @return Response
-     * @Route  ("back/afficheA" , name ="afficheA")
+     * @Route  ("/afficheA" , name ="afficheA")
      */
     public function Affiche(AbonnementRepository $repo   ) {
         //$repo=$this ->getDoctrine()->getRepository(Abonnement::class) ;
@@ -46,7 +47,7 @@ class IndexController extends AbstractController
 
     /**
      * @return void
-     * @route ("back/delete/{ida}" ,name ="delete" )
+     * @route ("/delete/{ida}" ,name ="delete" )
      */
     function Delete($ida,AbonnementRepository $repository) {
         $abonnement=$repository->find($ida) ;
@@ -59,7 +60,7 @@ class IndexController extends AbstractController
 
     /**
      * @return void
-     * @route ("back/update{ida}" , name="update")
+     * @route ("/update{ida}" , name="update")
      */
     function update(AbonnementRepository $repo,$ida,Request $request){
         $abonnement = $repo->find($ida) ;
@@ -90,7 +91,7 @@ class IndexController extends AbstractController
     /**
      * @param Request $request
      * @return Response
-     * @Route ("back/ajoutA" , name="ajoutA")
+     * @Route ("/ajoutA" , name="ajoutA")
      */
     function Add(Request  $request ) {
         $Abonnement =  new Abonnement() ;
@@ -135,7 +136,7 @@ class IndexController extends AbstractController
     /**
      * @param AbonnementRepository $repo
      * @return Response
-     * @route ("back/afficheC" , name ="afficheC")
+     * @route ("/afficheC" , name ="afficheC")
      */
     public function AffichCompte (ComptRepository $repo   ) {
         //$repo=$this ->getDoctrine()->getRepository(Abonnement::class) ;
@@ -149,14 +150,20 @@ class IndexController extends AbstractController
     /**
      * @param Request $request
      * @return Response
-     * @Route ("back/ajoutC" , name="ajoutC")
+     * @Route ("/ajoutC" , name="ajoutC")
      */
-    function addcompt (Request  $request ) {
+    function addcompt (Request  $request , UserPasswordEncoderInterface $userPasswordEncoder ) {
         $compt =  new Compt() ;
         $formC =  $this->createForm(ComptType::class,$compt) ;
         $formC->add('Ajouter' , SubmitType::class) ;
         $formC->handleRequest($request) ;
         if($formC->isSubmitted()&& $formC->isValid()){
+            $compt->setPassword(
+                $userPasswordEncoder->encodePassword(
+                    $compt,
+                    $formC->get('plainPassword')->getData()
+                )
+            );
 
             $em=$this->getDoctrine()->getManager() ;
             $em->persist($compt);
@@ -169,7 +176,7 @@ class IndexController extends AbstractController
     }
     /**
      * @return void
-     * @route ("back/updatC{idcompt}" , name="upc")
+     * @route ("/updatC{idcompt}" , name="upc")
      */
     function updatec(ComptRepository $repo,$idcompt,Request $request){
         $compt = $repo->find($idcompt) ;
@@ -190,7 +197,7 @@ class IndexController extends AbstractController
 
     /**
      * @return void
-     * @route ("back/deleteC/{idcompt}" ,name ="deleteC" )
+     * @route ("/deleteC/{idcompt}" ,name ="deleteC" )
      */
     function Deletec($idcompt,ComptRepository $repository) {
         $compt=$repository->find($idcompt) ;

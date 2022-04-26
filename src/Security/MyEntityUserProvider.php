@@ -2,8 +2,9 @@
 
 namespace App\Security;
 
-use App\Entity\User;
 
+
+use App\Entity\Compt;
 use HWI\Bundle\OAuthBundle\Connect\AccountConnectorInterface;
 use HWI\Bundle\OAuthBundle\OAuth\Response\UserResponseInterface;
 use HWI\Bundle\OAuthBundle\Security\Core\User\EntityUserProvider;
@@ -54,7 +55,7 @@ class MyEntityUserProvider extends EntityUserProvider implements AccountConnecto
      */
     public function connect(UserInterface $user, UserResponseInterface $response)
     {
-        if (!$user instanceof User) {
+        if (!$user instanceof Compt) {
             throw new UnsupportedUserException(sprintf('Expected an instance of App\Model\User, but got "%s".', get_class($user)));
         }
 

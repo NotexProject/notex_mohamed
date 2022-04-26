@@ -17,7 +17,7 @@
         class="light-style customizer-hide"
         dir="ltr"
         data-theme="theme-default"
-        data-assets-path="../assets/"
+        data-assets-path="back/"
         data-template="vertical-menu-template-free"
 >
 <head>
@@ -27,12 +27,12 @@
             content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0"
     />
 
-    <title>Login - Welcome to  Notex </title>
+    <title>Welcome to Notex Register Now </title>
 
     <meta name="description" content="" />
 
     <!-- Favicon -->
-    <link rel="icon" type="image/x-icon" href="{{ asset('back/img/favicon/favicon.ico') }}" />
+    <link rel="icon" type="image/x-icon" href="{{ asset ('back/img/favicon/favicon.ico') }}" />
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -43,25 +43,25 @@
     />
 
     <!-- Icons. Uncomment required icon fonts -->
-    <link rel="stylesheet" href="{{ asset('back/vendor/fonts/boxicons.css') }}" />
+    <link rel="stylesheet" href="{{ asset ('back/vendor/fonts/boxicons.css') }}" />
 
     <!-- Core CSS -->
-    <link rel="stylesheet" href="{{ asset('back/vendor/css/core.css') }}" class="template-customizer-core-css" />
-    <link rel="stylesheet" href="{{ asset('back/vendor/css/theme-default.css') }}" class="template-customizer-theme-css" />
-    <link rel="stylesheet" href="{{ asset('back/css/demo.css') }}" />
+    <link rel="stylesheet" href="{{ asset ('back/vendor/css/core.css') }}" class="template-customizer-core-css" />
+    <link rel="stylesheet" href="{{ asset ('back/vendor/css/theme-default.css') }}" class="template-customizer-theme-css" />
+    <link rel="stylesheet" href="{{ asset ('back/css/demo.css') }}" />
 
     <!-- Vendors CSS -->
     <link rel="stylesheet" href="{{ asset ('back/vendor/libs/perfect-scrollbar/perfect-scrollbar.css') }}" />
 
     <!-- Page CSS -->
     <!-- Page -->
-    <link rel="stylesheet" href="{{ asset('back/vendor/css/pages/page-auth.css') }}" />
+    <link rel="stylesheet" href="{{ asset ('back/vendor/css/pages/page-auth.css') }}" />
     <!-- Helpers -->
     <script src="{{ asset ('back/vendor/js/helpers.js') }}"></script>
 
     <!--! Template customizer & Theme config files MUST be included after core stylesheets and helpers.js in the <head> section -->
     <!--? Config:  Mandatory theme config file contain global vars & default theme options, Set your preferred theme option in this file.  -->
-    <script src="../assets/js/config.js"></script>
+    <script src="{{ asset ('back/js/config.js') }}"></script>
 </head>
 
 <body>
@@ -70,15 +70,14 @@
 <div class="container-xxl">
     <div class="authentication-wrapper authentication-basic container-p-y">
         <div class="authentication-inner">
-            <!-- Register -->
+            <!-- Register Card -->
             <div class="card">
                 <div class="card-body">
                     <!-- Logo -->
                     <div class="app-brand justify-content-center">
                         <a href="index.html" class="app-brand-link gap-2">
                   <span class="app-brand-logo demo">
-                      <img src="{{ asset ('uploads/images/278871473_676525330284437_7607484847902265812_n.gif') }}"  style="width:50px ; height:50px" alt="" >
-
+                     <img src="{{ asset ('uploads/images/278871473_676525330284437_7607484847902265812_n.gif') }}"  style="width:50px ; height:50px" alt="" >
                       <defs>
                         <path
                                 d="M13.7918663,0.358365126 L3.39788168,7.44174259 C0.566865006,9.69408886 -0.379795268,12.4788597 0.557900856,15.7960551 C0.68998853,16.2305145 1.09562888,17.7872135 3.12357076,19.2293357 C3.8146334,19.7207684 5.32369333,20.3834223 7.65075054,21.2172976 L7.59773219,21.2525164 L2.63468769,24.5493413 C0.445452254,26.3002124 0.0884951797,28.5083815 1.56381646,31.1738486 C2.83770406,32.8170431 5.20850219,33.2640127 7.09180128,32.5391577 C8.347334,32.0559211 11.4559176,30.0011079 16.4175519,26.3747182 C18.0338572,24.4997857 18.6973423,22.4544883 18.4080071,20.2388261 C17.963753,17.5346866 16.1776345,15.5799961 13.0496516,14.3747546 L10.9194936,13.4715819 L18.6192054,7.984237 L13.7918663,0.358365126 Z"
@@ -124,102 +123,43 @@
                           </g>
                         </g>
                       </g>
-                    </svg>
+                      </svg>
                   </span>
-                            <span class="app-brand-text demo text-body fw-bolder">Notex</span>
+                            <span class="app-brand-text demo text-body fw-bolder">Sneat</span>
                         </a>
                     </div>
                     <!-- /Logo -->
-                    <h4 class="mb-2">Strart ur Carrier 👋</h4>
-                    <p class="mb-4">Please sign-in to your account and start the adventure</p>
-
-                    {% for message in app.flashes('message') %}
-                        {{ message }}
-                    {% endfor %}
-                    {% for message in app.flashes('danger') %}
-                        {{ message }}
-                    {% endfor %}
-                    {% for message in app.flashes('warning') %}
-                        {{ message }}
+                    <h4 class="mb-2">Adventure starts here 🚀</h4>
+                    <p class="mb-4">Make your app management easy and fun!</p>
+                    {% for flash_error in app.flashes('verify_email_error') %}
+                        <div class="alert alert-danger" role="alert">{{ flash_error }}</div>
                     {% endfor %}
                     <form  class="mb-3"  method="POST">
-                        {% for flash_error in app.flashes('verify_email_error') %}
-                            <div class="alert alert-danger" role="alert">{{ flash_error }}</div>
-                        {% endfor %}
-                        {% for flashSucces in app.flashes('success') %}
-                            <div class="alert alert-success" role="alert">{{ flashSucces }}</div>
-                        {% endfor %}
-                        {% if error %}
-                            <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
-                        {% endif %}
-                       {# {% if app.user %}
-                            <div class="mb-3">
-                                You are logged in as {{ app.user.username }}, <a href="{{ path('app_') }}">Logout</a>
-                            </div>
-                        {% endif %}#}
-                        <div class="mb-3">
-                            <label for="email" class="form-label">Email </label>
-                            <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" autocomplete="email" required autofocus>
-                        </div>
-                        <div class="mb-3 form-password-toggle">
-                            <div class="d-flex justify-content-between">
-                                <label class="form-label" for="password">Password</label>
-                                <a href="{{ path('app_forgotten_password') }}">
-                                    <small>Forgot Password?</small>
-                                </a>
-                            </div>
-                            <div class="input-group input-group-merge">
-                                <input
-                                        type="password"
-                                        id="password"
-                                        class="form-control"
-                                        name="password"
-                                        placeholder="&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;"
-                                        aria-describedby="password"
-                                />
-                                <span class="input-group-text cursor-pointer"><i class="bx bx-hide"></i></span>
-                            </div>
-                        </div>
+                        {{ form_start(registrationForm) }}
+                        {% form_theme registrationForm 'bootstrap_4_layout.html.twig' %}
 
+                        {{ form_widget(registrationForm) }}
 
-                        <input type="hidden" name="_csrf_token"
-                               value="{{ csrf_token('authenticate') }}"
-                        >
-                        <div class="mb-3">
-                            <button class="btn btn-primary d-grid w-100" type="submit">Sign in</button>
-                        </div>
+                        <button class="btn btn-primary d-grid w-100" type="submit">Sign in</button>
+                        {{ form_end(registrationForm) }}
                     </form>
-                    <hr>
-
-                    <a href="{{ path('hwi_oauth_service_redirect', {'service': 'facebook' }) }}">
-                        <span>Login with Facebook</span>
-                    </a>
-                    <br>
-
 
                     <p class="text-center">
-                        <span>New on our platform?</span>
-                        <a href="{{ path('app_register') }}">
-                            <span>Create an account</span>
+                        <span>Already have an account?</span>
+                        <a href="{{ path ('app_login') }}">
+                            <span>Sign in instead</span>
                         </a>
                     </p>
                 </div>
             </div>
-            <!-- /Register -->
+            <!-- Register Card -->
         </div>
     </div>
 </div>
 
 <!-- / Content -->
 
-{#<div class="buy-now">
-    <a
-            href="https://themeselection.com/products/sneat-bootstrap-html-admin-template/"
-            target="_blank"
-            class="btn btn-danger btn-buy-now"
-    >Upgrade to Pro</a
-    >
-</div>#}
+
 
 <!-- Core JS -->
 <!-- build:js assets/vendor/js/core.js -->
@@ -228,7 +168,7 @@
 <script src="{{ asset ('back/vendor/js/bootstrap.js') }}"></script>
 <script src="{{ asset ('back/vendor/libs/perfect-scrollbar/perfect-scrollbar.js') }}"></script>
 
-<script src="{{ asset ('back/vendor/js/menu.js') }}../assets/vendor/js/menu.js"></script>
+<script src="{{ asset ('back/vendor/js/menu.js') }}"></script>
 <!-- endbuild -->
 
 <!-- Vendors JS -->
@@ -242,3 +182,28 @@
 <script async defer src="https://buttons.github.io/buttons.js"></script>
 </body>
 </html>
+
+
+
+
+{#
+<!DOCTYPE html>
+
+<title>Register</title>
+
+{% block body %}
+    <h1>Register</h1>
+
+    {{ form_start(registrationForm) }}
+        {{ form_row(registrationForm.email) }}
+        {{ form_row(registrationForm.plainPassword, {
+            label: 'Password'
+        }) }}
+        {{ form_row(registrationForm.agreeTerms) }}
+
+        <button type="submit" class="btn">Register</button>
+    {{ form_end(registrationForm) }}
+
+{% endblock %}
+
+#}

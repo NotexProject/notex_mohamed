@@ -65,7 +65,7 @@ class Abonnement
      * @Assert\NotBlank
      * @ORM\Column(name="image", type="string", length=255, nullable=true, options={"default"="NULL"})
      */
-    private $image = 'NULL';
+    private $image = 'NULL' ;
 
     public function getIda(): ?int
     {
@@ -108,12 +108,12 @@ class Abonnement
         return $this;
     }
 
-    public function getImage(): ?string
+    public function getImage()
     {
         return $this->image;
     }
 
-    public function setImage(?string $image): self
+    public function setImage( $image): self
     {
         $this->image = $image;
 

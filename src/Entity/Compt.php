@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
@@ -10,8 +12,9 @@ use Symfony\Component\Validator\Constraints as Assert;
  *
  * @ORM\Table(name="compt")
  * @ORM\Entity
+ * @UniqueEntity(fields={"email"}, message="There is already an account with this email")
  */
-class Compt
+class Compt implements UserInterface
 {
     /**
      * @var int
@@ -25,7 +28,7 @@ class Compt
     /**
      * @var string
      * @Assert\NotBlank
-       * @Assert\Length(
+     * @Assert\Length(
      *      min = 4,
      *      max = 20,
      *      minMessage = " must be at least {{ limit }} characters long",
@@ -44,6 +47,20 @@ class Compt
      * @ORM\Column(name="email", type="string", length=255, nullable=false)
      */
     private $email;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="username", type="string", length=255, nullable=false)
+     */
+    private $username;
+
+    /**
+     * @var string
+     * @var string The hashed password
+     * @ORM\Column(name="password", type="string", length=255, nullable=false)
+     */
+    private $password;
 
     /**
      * @var \DateTime
@@ -83,17 +100,134 @@ class Compt
     private $adress;
 
     /**
-     * @var string
      * @Assert\NotBlank
-     * @Assert\Length(
-     *      min = 4,
-     *      max = 20,
-     *      minMessage =  "must be at least {{ limit }} characters long",
-     *      maxMessage = " cannot be longer than {{ limit }} characters"
-     * )
-     * @ORM\Column(name="role", type="string", length=255, nullable=false)
+     * @ORM\Column(type="json")
      */
-    private $role;
+    private $roles = [];
+
+
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    private $isVerified = false;
+
+
+    private $facebookID;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $facebookAccessToken;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $githubID;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $githubAccessToken;
+    protected $captchaCode;
+
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $reset_token;
+
+    /**
+     * @return mixed
+     */
+    public function getResetToken()
+    {
+        return $this->reset_token;
+    }
+
+    /**
+     * @param mixed $reset_token
+     */
+    public function setResetToken($reset_token): void
+    {
+        $this->reset_token = $reset_token;
+    }
+
+    public function getCaptchaCode()
+    {
+        return $this->captchaCode;
+    }
+
+    public function setCaptchaCode($captchaCode)
+    {
+        $this->captchaCode = $captchaCode;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getFacebookID()
+    {
+        return $this->facebookID;
+    }
+
+    /**
+     * @param mixed $facebookID
+     */
+    public function setFacebookID($facebookID): void
+    {
+        $this->facebookID = $facebookID;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getFacebookAccessToken()
+    {
+        return $this->facebookAccessToken;
+    }
+
+    /**
+     * @param mixed $facebookAccessToken
+     */
+    public function setFacebookAccessToken($facebookAccessToken): void
+    {
+        $this->facebookAccessToken = $facebookAccessToken;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getGithubID()
+    {
+        return $this->githubID;
+    }
+
+    /**
+     * @param mixed $githubID
+     */
+    public function setGithubID($githubID): void
+    {
+        $this->githubID = $githubID;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getGithubAccessToken()
+    {
+        return $this->githubAccessToken;
+    }
+
+    /**
+     * @param mixed $githubAccessToken
+     */
+    public function setGithubAccessToken($githubAccessToken): void
+    {
+        $this->githubAccessToken = $githubAccessToken;
+    }
+
+
+
 
     public function getIdcompt(): ?int
     {
@@ -112,14 +246,40 @@ class Compt
         return $this;
     }
 
-    public function getEmail(): ?string
-    {
-        return $this->email;
-    }
-
     public function setEmail(string $email): self
     {
         $this->email = $email;
+
+        return $this;
+    }
+    /**
+     * A visual identifier that represents this user.
+     *
+     * @see UserInterface
+     */
+    public function getUsername(): string
+    {
+        return (string) $this->email;
+    }
+
+    public function setUsername(string $username): self
+    {
+        $this->username = $username;
+
+        return $this;
+    }
+    /**
+
+     * @see UserInterface
+     */
+    public function getPassword(): string
+    {
+        return $this->password;
+    }
+
+    public function setPassword(string $password): self
+    {
+        $this->password = $password;
 
         return $this;
     }
@@ -160,16 +320,53 @@ class Compt
         return $this;
     }
 
-    public function getRole(): ?string
+
+    public function getSalt()
     {
-        return $this->role;
+
     }
 
-    public function setRole(string $role): self
+    public function eraseCredentials()
     {
-        $this->role = $role;
+
+    }
+
+    public function getEmail(): ?string
+    {
+        return $this->email;
+    }
+
+    public function isVerified(): bool
+    {
+        return $this->isVerified;
+    }
+
+    public function setIsVerified(bool $isVerified): self
+    {
+        $this->isVerified = $isVerified;
 
         return $this;
+    }
+
+    public function getRoles(): array
+    {
+        $roles = $this->roles;
+        // guarantee every user at least has ROLE_USER
+        $roles[] = 'ROLE_USER';
+
+        return array_unique($roles);
+    }
+
+    public function setRoles(array $roles): self
+    {
+        $this->roles = $roles;
+
+        return $this;
+    }
+
+    public function getIsVerified(): ?bool
+    {
+        return $this->isVerified;
     }
 
 
