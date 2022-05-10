@@ -1,0 +1,114 @@
+{% extends 'base.back.html.twig' %}
+ {% block dashboard %}
+     <!-- Dashboard -->
+
+     <li class="menu-item active">
+         <a href="{{ asset ('afficheC') }}" class="menu-link">
+             <i class="menu-icon tf-icons bx bx-home-circle"></i>
+             <div data-i18n="Analytics">Gestion des commentaire</div>
+         </a>
+     </li>
+     <li class="menu-item active">
+         <a href="{{ asset ('afficheE') }}" class="menu-link">
+             <i class="menu-icon tf-icons bx bx-home-circle"></i>
+             <div data-i18n="Analytics">Gestion des évènements</div>
+         </a>
+     </li>
+     <li class="menu-item active">
+         <a href="{{ asset ('afficheP') }}" class="menu-link">
+             <i class="menu-icon tf-icons bx bx-home-circle"></i>
+             <div data-i18n="Analytics">Gestion des participation</div>
+         </a>
+     </li>
+     <li class="menu-item active">
+         <a href="{{ asset ('admin/afficheAbonnement') }}" class="menu-link">
+             <i class="menu-icon tf-icons bx bx-home-circle"></i>
+             <div data-i18n="Analytics">Gestion abonnement</div>
+         </a>
+         <a href="{{ asset ('admin/ajoutA') }}" class="menu-link">
+             <i class="menu-icon tf-icons bx bx-home-circle"></i>
+             <div data-i18n="Analytics">Ajouter un abonnement</div>
+         </a>
+         <a href="{{ asset ('admin/afficheC') }}" class="menu-link">
+             <i class="menu-icon tf-icons bx bx-home-circle"></i>
+             <div data-i18n="Analytics">Gestion Compt</div>
+         </a>
+         <a href="{{ asset ('admin/ajoutC') }}" class="menu-link">
+             <i class="menu-icon tf-icons bx bx-home-circle"></i>
+             <div data-i18n="Analytics">Ajouter un Compte</div>
+         </a>
+     </li>
+     <li class="menu-item active">
+         <a href="{{ path('app_offre_index') }}" class="menu-link">
+             <i class="menu-icon tf-icons bx bx-home-circle"></i>
+             <div data-i18n="Analytics">Liste Offre</div>
+         </a>
+     </li>
+
+
+
+
+     <li class="menu-item active">
+         <a href="{{ path('app_offre_new') }}" class="menu-link">
+             <i class="menu-icon tf-icons bx bx-home-circle"></i>
+             <div data-i18n="Analytics">Ajouter Offre</div>
+         </a>
+     </li>
+
+
+
+
+
+     <li class="menu-item active">
+         <a href="{{ path('app_reclamation_index') }}" class="menu-link">
+             <i class="menu-icon tf-icons bx bx-home-circle"></i>
+             <div data-i18n="Analytics">Liste Reclamation</div>
+         </a>
+     </li>
+
+
+
+
+     <li class="menu-item active">
+         <a href="{{ path('app_reclamation_new') }}" class="menu-link">
+             <i class="menu-icon tf-icons bx bx-home-circle"></i>
+             <div data-i18n="Analytics">Ajouter Reclamation</div>
+         </a>
+     </li>
+ {% endblock %}
+
+
+{% block content  %}
+    <div class="card">
+        <h5 class="card-header">Liste des commentaire </h5>
+        <div class="table-responsive text-nowrap">
+            <table class="table">
+                <thead>
+                <tr>
+                    <th> ID</th>
+                    <th>contenue</th>
+                    <th>email</th>
+                    <th>nickname</th>
+                    <th>date_de_creation</th>
+                    <th>action</th>
+                </tr>
+                </thead>
+                <tbody class="table-border-bottom-0">
+                <tr {% for c in comments %}>
+                    <td>{{ c.id }}</td>
+                    <td>{{ c.content }}</td>
+                    <td>{{ c.email }}</td>
+                    <td>{{ c.nickname }}</td>
+                    <td>{{c.dateComment|date('d-m-Y')}}</td>
+                    <td> <a href="{{ path('deleteComment',{'id':c.id}) }}"> <button type="submit" class="btn btn-danger">Delete</button></a> <a href="{{ path('UpdateC',{'id':c.id}) }}"> <button type="submit" class="btn btn-info">Edit</button></a> </td>
+
+
+                </tr {% endfor %}>
+
+
+                </tbody>
+            </table>
+            <a href="{{ asset('homeC') }}"> <button type="submit" class="btn btn-dark">Rechercher un commentaire</button></a>
+        </div>
+    </div>
+{% endblock %}

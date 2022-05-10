@@ -27,7 +27,7 @@
 {% endblock %}
 {% block dashboard %}
     <li class="menu-item active">
-        <a href="{{ asset ('admin/afficheA') }}" class="menu-link">
+        <a href="{{ asset ('admin/afficheAbonnement') }}" class="menu-link">
             <i class="menu-icon tf-icons bx bx-home-circle"></i>
             <div data-i18n="Analytics">Gestion abonnement</div>
         </a>
@@ -44,6 +44,62 @@
             <div data-i18n="Analytics">Ajouter un Compte</div>
         </a>
     </li>
+    <li class="menu-item active">
+                        <a href="{{ path('app_offre_index') }}" class="menu-link">
+                            <i class="menu-icon tf-icons bx bx-home-circle"></i>
+                            <div data-i18n="Analytics">Liste Offre</div>
+                        </a>
+                    </li>
+
+
+
+
+                    <li class="menu-item active">
+                        <a href="{{ path('app_offre_new') }}" class="menu-link">
+                            <i class="menu-icon tf-icons bx bx-home-circle"></i>
+                            <div data-i18n="Analytics">Ajouter Offre</div>
+                        </a>
+                    </li>
+
+
+
+
+
+                    <li class="menu-item active">
+                        <a href="{{ path('app_reclamation_index') }}" class="menu-link">
+                            <i class="menu-icon tf-icons bx bx-home-circle"></i>
+                            <div data-i18n="Analytics">Liste Reclamation</div>
+                        </a>
+                    </li>
+
+
+
+
+                    <li class="menu-item active">
+                        <a href="{{ path('app_reclamation_new') }}" class="menu-link">
+                            <i class="menu-icon tf-icons bx bx-home-circle"></i>
+                            <div data-i18n="Analytics">Ajouter Reclamation</div>
+                        </a>
+                    </li>
+                    <li class="menu-item active">
+         <a href="" class="menu-link">
+             <i class="menu-icon tf-icons bx bx-home-circle"></i>
+             <div data-i18n="Analytics">Gestion des évènements</div>
+         </a>
+     </li>
+     <!-- Dashboard -->
+     <li class="menu-item active">
+         <a href="{{ asset ('afficheC') }}" class="menu-link">
+             <i class="menu-icon tf-icons bx bx-home-circle"></i>
+             <div data-i18n="Analytics">Gestion des commentaires</div>
+         </a>
+     </li>
+     <li class="menu-item active">
+         <a href="{{ asset ('afficheP') }}" class="menu-link">
+             <i class="menu-icon tf-icons bx bx-home-circle"></i>
+             <div data-i18n="Analytics">Gestion des participation</div>
+         </a>
+     </li>
 {% endblock %}
 {% block content  %}
     {% form_theme formC 'bootstrap_4_layout.html.twig' %}

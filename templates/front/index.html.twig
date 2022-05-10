@@ -2,12 +2,11 @@
 
 {% block button  %}
     <a class="btn-getstarted scrollto" href="app_logout">Logout</a>
-    <a class="btn-getstarted scrollto" href="afficheA">Administration</a>
+    <a class="btn-getstarted scrollto" href="afficheAbonnement">Administrationc</a>
 
 {% endblock %}
 
 {% block body %}
-
     <section id="blog" class="blog"  >
 
         <div class="container" data-aos="fade-up" >
@@ -41,6 +40,9 @@
                                         {{ a.description }}
                                     </p>
                                 </div>
+                                <form action="/checkout" method="POST">
+                                    <button type="submit" class="btn btn-primary btn-lg">Checkout</button>
+                                </form>
 
 
 

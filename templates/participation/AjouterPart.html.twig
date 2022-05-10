@@ -1,0 +1,153 @@
+{% extends 'base.front.html.twig' %}
+{% block body %}
+  {% form_theme form 'bootstrap_4_layout.html.twig' %}
+  <!-- ======= About Section ======= -->
+  <section id="about" class="about">
+    <div class="container" data-aos="fade-up">
+
+      <div class="section-header">
+        <h2>Description de l'événement</h2>
+        <p>Les événements organisés par NOTEX sont les meilleurs opportunités pour avoir une excellente liaison entre les créateurs de contenus et les brands</p>
+      </div>
+
+      <div class="row g-4 g-lg-5" data-aos="fade-up" data-aos-delay="200">
+
+        <div class="col-lg-5">
+          <div class="about-img">
+            <img src="{{ asset ('assets/img/instainsta.jpg')}}" class="img-fluid" alt="">
+          </div>
+        </div>
+
+        <div class="col-lg-7">
+          <h3 class="pt-0 pt-lg-5">InstaMeet</h3>
+
+          <!-- Tabs -->
+          <ul class="nav nav-pills mb-3">
+            <li><a class="nav-link active" data-bs-toggle="pill" href="#tab1">les invités cibles</a></li>
+            <li><a class="nav-link" data-bs-toggle="pill" href="#tab2">localisation</a></li>
+            <li><a class="nav-link" data-bs-toggle="pill" href="#tab3">frais de participation</a></li>
+          </ul><!-- End Tabs -->
+
+          <!-- Tab Content -->
+          <div class="tab-content">
+
+            <div class="tab-pane fade show active" id="tab1">
+
+              <p class="fst-italic">Pour cet événment nous proposons aux créateurs de contenus de regrouper dans un lieu précis pour faire des challenges ou un contenu dans le meme theme  </p>
+
+              <div class="d-flex align-items-center mt-4">
+                <i class="bi bi-check2"></i>
+                <h4>GO GO!! Si vous étes un créateur de contenu</h4>
+              </div>
+              <p>C'est une opppotunités pour les photographes,les instagrammeurs,les aventuriers et tous les genres de créteurs de contenus </p>
+
+              <div class="d-flex align-items-center mt-4">
+                <i class="bi bi-check2"></i>
+                <h4>COME AND CHECK!! si vous étes une brand </h4>
+              </div>
+              <p>C'est l'événement parfait pour trouver les créateurs de contenus dans un méme lieu,comme une brand c'est votre oppotunités</p>
+
+              <div class="d-flex align-items-center mt-4">
+                <i class="bi bi-check2"></i>
+                <h4>YOU'RE ALWAYS WELCOME!! si vous étes un amateur </h4>
+              </div>
+              <p>si vous n'avez aucun contenu à faire, soyez le bienvenue pour participer à tous nos événements</p>
+
+            </div><!-- End Tab 1 Content -->
+
+            <div class="tab-pane fade show" id="tab2">
+
+              <p class="fst-italic">Nous choisissons les meilleurs lieux pour nos invités </p>
+
+              <div class="d-flex align-items-center mt-4">
+                <i class="bi bi-check2"></i>
+                <h4>Jour 1:Carthage </h4>
+              </div>
+              <p>Pour un bon Start,tous les participants sont invités à Carthage pour faire une DOULECHA</p>
+
+              <div class="d-flex align-items-center mt-4">
+                <i class="bi bi-check2"></i>
+                <h4>Jour 2:Sidi bou sid </h4>
+              </div>
+              <p>Le deuxieme jour, ca sera à Sidi bou sid,le lieu préféré de tous les tunisiens .</p>
+
+              <div class="d-flex align-items-center mt-4">
+                <i class="bi bi-check2"></i>
+                <h4>Jour 3:El Medina.</h4>
+              </div>
+              <p>Pour finir notre petite experience,on a choisis el Medina pour le dernier regroupement des particiapnts</p>
+
+            </div><!-- End Tab 2 Content -->
+
+            <div class="tab-pane fade show" id="tab3">
+
+              <p class="fst-italic">Le frais de participation est choisi par nos organisateurs.</p>
+
+              <div class="d-flex align-items-center mt-4">
+                <i class="bi bi-check2"></i>
+                <h4>15DT</h4>
+              </div>
+              <p>Le paiment sera sur place le premier jour à Carthage.</p>
+
+
+
+            </div><!-- End Tab 3 Content -->
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+  </section><!-- End About Section -->
+  <!--partie ajout-->
+  <div class="templatemo-content-container">
+    <div class="templatemo-content-widget white-bg">
+
+      <h2 class="margin-bottom-10">Participer à l'événement</h2>
+      {{form_start(form,{'attr' :{'novalidate':'novalidate'}})}}
+
+      {{ form_end(form) }}
+
+    </div>
+  </div>
+  <!--partie annuler-->
+  <div class="templatemo-content-container">
+    <div class="templatemo-content-widget white-bg">
+      <h2 class="margin-bottom-10">Annuler une participation si vous etes déja inscrit</h2>
+  </div>
+  </div>
+  <<div class="card">
+  <h5 class="card-header">participation</h5>
+  <div class="table-responsive text-nowrap">
+    <table class="table">
+      <thead>
+      <tr>
+        <th>idPart</th>
+        <th>prénom</th>
+        <th>nom</th>
+        <th>type</th>
+
+      </tr>
+      </thead>
+      <tbody class="table-border-bottom-0">
+      <tr {% for a in participation %}>
+        <td> {{ a.idPart }}</td>
+        <td> {{ a.prenomPart }}</td>
+        <td> {{ a.nomPart }}</td>
+        <td> {{ a.typePart }}</td>
+        <td> <a href="{{ path('delete',{'idPart':a.idPart}) }}"> Delete</a>  <a href="{{ path('update',{'idPart':a.idPart}) }}"> update</a> </td>
+      </tr {% endfor %}>
+
+
+      </tbody>
+    </table>
+  </div>
+</div>
+
+
+{% endblock %}
+
+{% block test %}
+{% endblock %}

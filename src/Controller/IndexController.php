@@ -33,7 +33,7 @@ class IndexController extends AbstractController
     /**
      * @param AbonnementRepository $repo
      * @return Response
-     * @Route  ("/afficheA" , name ="afficheA")
+     * @Route  ("/afficheAbonnement" , name ="afficheAbonnement")
      */
     public function Affiche(AbonnementRepository $repo   ) {
         //$repo=$this ->getDoctrine()->getRepository(Abonnement::class) ;
@@ -47,7 +47,7 @@ class IndexController extends AbstractController
 
     /**
      * @return void
-     * @route ("/delete/{ida}" ,name ="delete" )
+     * @route ("/deleteA/{ida}" ,name ="deleteA" )
      */
     function Delete($ida,AbonnementRepository $repository) {
         $abonnement=$repository->find($ida) ;
@@ -60,7 +60,7 @@ class IndexController extends AbstractController
 
     /**
      * @return void
-     * @route ("/update{ida}" , name="update")
+     * @route ("/updateA/{ida}" , name="updateA")
      */
     function update(AbonnementRepository $repo,$ida,Request $request){
         $abonnement = $repo->find($ida) ;

@@ -1,0 +1,49 @@
+{{ form_start(form,{'attr':{'novalidate': 'novalidate'}}) }}
+<table>
+
+    <tr>
+        <td>{{ form_label(form.nomoffre,"Titre de l'offre") }}</td>
+        <td>{{ form_widget(form.nomoffre) }}</td>
+        <td><span style="color:red">{{ form_errors(form.nomoffre) }}</span></td>
+    </tr>
+    <tr>
+        <td>{{ form_label(form.datedebut,"la date de debut de votre offre") }}</td>
+        <td>{{ form_widget(form.datedebut) }}</td>
+        <td><span style="color:red">{{ form_errors(form.datedebut) }}</span></td>
+    </tr>
+    <tr>
+        <td>{{ form_label(form.datefin,"la date de fin de votre offre") }}</td>
+        <td>{{ form_widget(form.datefin) }}</td>
+        <td><span style="color:red">{{ form_errors(form.datefin) }}</span></td>
+    </tr>
+    <tr>
+        <td>{{ form_label(form.description) }}</td>
+        <td>{{ form_widget(form.description) }}</td>
+        <td><span style="color:red">{{ form_errors(form.description) }}</span></td>
+    </tr>
+    <tr>
+        <td>{{ form_label(form.imgsrc,"votre image") }}</td>
+        <td>{{ form_widget(form.imgsrc) }}</td>
+        <td><span style="color:red">{{ form_errors(form.imgsrc) }}</span></td>
+    </tr>
+    <tr>
+        <td>{{ form_label(form.couleur) }}</td>
+        <td>{{ form_widget(form.couleur) }}</td>
+        <td><span style="color:red">{{ form_errors(form.couleur) }}</span></td>
+    </tr>
+    <tr>
+        <td>{{ form_label(form.typeoffre) }}</td>
+        <td>{{ form_widget(form.typeoffre) }}</td>
+        <td><span style="color:red">{{ form_errors(form.typeoffre) }}</span></td>
+    </tr>
+    <tr>
+        <td>{{ form_label(form.cincreateuroffre) }}</td>
+        <td>{{ form_widget(form.cincreateuroffre) }}</td>
+        <td><span style="color:red">{{ form_errors(form.cincreateuroffre) }}</span></td>
+    </tr>
+
+</table>
+    <button class="btn">{{ button_label|default('Ajouter') }}</button>
+{{ form_end(form) }}
+
+

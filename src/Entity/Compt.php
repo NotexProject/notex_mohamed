@@ -7,6 +7,7 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Validator\Constraints as Assert;
 
+
 /**
  * Compt
  *
@@ -22,6 +23,7 @@ class Compt implements UserInterface
      * @ORM\Column(name="idcompt", type="integer", nullable=false)
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
+     *
      */
     private $idcompt;
 
@@ -110,6 +112,10 @@ class Compt implements UserInterface
      * @ORM\Column(type="boolean")
      */
     private $isVerified = false;
+
+    /**
+     * @return int
+     */
 
 
     private $facebookID;

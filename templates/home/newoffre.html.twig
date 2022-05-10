@@ -1,0 +1,91 @@
+{% extends 'base.html.twig' %}
+{% block title %}Notex creation offre{% endblock %}
+
+
+{% block content %}
+    <main id="main">
+
+    <!-- ======= Breadcrumbs ======= -->
+    <div class="breadcrumbs">
+        <div class="container">
+
+            <div class="d-flex justify-content-between align-items-center">
+                <h2>Cree un Offre</h2>
+                <ol>
+                    <li><a href="{{ path('app_user') }}">Page Utilisateur</a></li>
+
+                    <li>Cree un offre</li>
+                </ol>
+            </div>
+
+        </div>
+    </div><!-- End Breadcrumbs -->
+    </br>
+    {% form_theme form 'bootstrap_4_layout.html.twig' %}
+    {{ form_start(form,{'attr':{'novalidate': 'novalidate'}}) }}
+
+
+    <table>
+
+        <tr>
+            <td>{{ form_label(form.nomoffre,"Titre de l'offre") }}</td>
+            <td>{{ form_widget(form.nomoffre) }}</td>
+            <td><span style="color:red">{{ form_errors(form.nomoffre) }}</span></td>
+        </tr>
+        <tr>
+            <td>{{ form_label(form.datedebut,"la date de debut de votre offre") }}</td>
+            <td>{{ form_widget(form.datedebut) }}</td>
+            <td><span style="color:red">{{ form_errors(form.datedebut) }}</span></td>
+        </tr>
+        <tr>
+            <td>{{ form_label(form.datefin,"la date de fin de votre offre") }}</td>
+            <td>{{ form_widget(form.datefin) }}</td>
+            <td><span style="color:red">{{ form_errors(form.datefin) }}</span></td>
+        </tr>
+        <tr>
+            <td>{{ form_label(form.description) }}</td>
+            <td>{{ form_widget(form.description) }}</td>
+            <td><span style="color:red">{{ form_errors(form.description) }}</span></td>
+        </tr>
+        <tr>
+            <td>{{ form_label(form.imgsrc,"votre image") }}</td>
+            <td>{{ form_widget(form.imgsrc) }}</td>
+            <td><span style="color:red">{{ form_errors(form.imgsrc) }}</span></td>
+        </tr>
+        <tr>
+            <td>{{ form_label(form.couleur) }}</td>
+            <td>{{ form_widget(form.couleur) }}</td>
+            <td><span style="color:red">{{ form_errors(form.couleur) }}</span></td>
+        </tr>
+        <tr>
+            <td>{{ form_label(form.typeoffre) }}</td>
+            <td>{{ form_widget(form.typeoffre) }}</td>
+            <td><span style="color:red">{{ form_errors(form.typeoffre) }}</span></td>
+        </tr>
+        <tr>
+
+            <td >{{ form_widget(form.cincreateuroffre,{"value": app.user.idcompt,"attr":{"class":"d-none"}}) }}</td>
+
+        </tr>
+
+    </table>
+    <br>
+
+    <div>
+    <button class="btn btn-primary" >{{ button_label|default('Ajouter') }}</button>
+    {{ form_end(form) }}
+    </div>
+
+    <nav aria-label="navigation">
+        <ul class="pager">
+            <li><a href="{{ path('offres_moi') }}" title="Précédent">Routourner a mes offre</a></li>
+
+        </ul>
+    </nav>
+
+
+
+
+
+
+{% endblock %}

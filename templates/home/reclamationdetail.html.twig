@@ -1,0 +1,73 @@
+{% extends 'base.html.twig' %}
+{% block title %}Notex reclamation detail{% endblock %}
+{% block content %}
+    <main id="main">
+
+        <!-- ======= Breadcrumbs ======= -->
+        <div class="breadcrumbs">
+            <div class="container">
+
+                <div class="d-flex justify-content-between align-items-center">
+                    <h2>Reclamation Détails</h2>
+                    <ol>
+                        <li><a href="{{ path('app_user') }}">Page Utilisateur</a></li>
+                        <li>Reclamation Détails</li>
+                    </ol>
+                </div>
+
+            </div>
+        </div><!-- End Breadcrumbs -->
+
+        <!-- ======= Portfolio Details Section ======= -->
+        <section id="portfolio-details" class="portfolio-details">
+            <div class="container" data-aos="fade-up">
+
+                <div class="row gy-4">
+
+                    <div class="col-lg-8">
+                        <div class="portfolio-details-slider swiper">
+                            <div class="swiper-wrapper align-items-center">
+
+                                <div class="swiper-slide">
+                                    <img src="{{ asset('front-office/assets/img/reclamation.png') }}" alt="">
+                                </div>
+                            </div>
+                            <div class="swiper-pagination"></div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4">
+                        <div class="portfolio-info">
+                            <h3>Votre reclamation</h3>
+                            <ul>
+                                <li><strong>type</strong>: {{ reclamation.typereclamation }}</li>
+                                <li><strong>nom prenom de createur</strong>: RJEB Ahmed</li>
+                                <li><strong>Etat</strong>: {{ reclamation.etat }}</li>
+                                <li><strong>date debut</strong>: {{ reclamation.datereclamation ? reclamation.datereclamation|date('Y-m-d') : '' }}</li>
+
+
+                                    <li><strong><a href="{{ path('reclamation_edit', {'idreclamation': reclamation.idreclamation}) }}">Editer</a></strong></li>
+
+
+                            </ul>
+                        </div>
+                        <div class="portfolio-description">
+                            <h2>Description</h2>
+                            <p>
+                                {{ reclamation.descriptionrecla }}
+                            </p>
+                            <h2>Comuniquer</h2>
+                            <p>
+                                {{ reclamation.comuniquer }}
+                            </p>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </section><!-- End Portfolio Details Section -->
+
+    </main><!-- End #main -->
+
+{% endblock %}

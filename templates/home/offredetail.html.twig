@@ -1,0 +1,69 @@
+{% extends 'base.html.twig' %}
+{% block title %}Notex Offre detail{% endblock %}
+{% block content %}
+    <main id="main">
+
+        <!-- ======= Breadcrumbs ======= -->
+        <div class="breadcrumbs">
+            <div class="container">
+
+                <div class="d-flex justify-content-between align-items-center">
+                    <h2>Offre Détails</h2>
+                    <ol>
+                        <li><a href="{{ path('app_user') }}">Page Utilisateur</a></li>
+                        <li><a href="{{ path('toutesles_offress') }}">Toutes Offres</a></li>
+                        <li>Offre Détails</li>
+                    </ol>
+                </div>
+
+            </div>
+        </div><!-- End Breadcrumbs -->
+
+        <!-- ======= Portfolio Details Section ======= -->
+        <section id="portfolio-details" class="portfolio-details">
+            <div class="container" data-aos="fade-up">
+
+                <div class="row gy-4">
+
+                    <div class="col-lg-8">
+                        <div class="portfolio-details-slider swiper">
+                            <div class="swiper-wrapper align-items-center">
+
+                                <div class="swiper-slide">
+                                    <img src="{{ asset( 'uploads/'~offre.imgsrc) }}" alt="">
+                                </div>
+                            </div>
+                            <div class="swiper-pagination"></div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4">
+                        <div class="portfolio-info">
+                            <h3>{{ offre.nomoffre }}</h3>
+                            <ul>
+                                <li><strong>type</strong>: {{ offre.typeoffre }}</li>
+                                <li><strong>nom prenom de createur</strong>: RJEB Ahmed</li>
+                                <li><strong>date debut</strong>: {{ offre.datedebut ? offre.datedebut|date('Y-m-d') : '' }}</li>
+                                <li><strong>date debut</strong>: {{ offre.datefin ? offre.datefin|date('Y-m-d') : '' }}</li>
+                                {% if offre.cincreateuroffre.idcompt==22 %}
+                                <li><strong><a href="{{ path('offre_edit', {'idoffre': offre.idoffre}) }}">Editer</a></strong></li>
+                                {% endif %}
+                                <li><strong><a href="{{ path('reclamation_new', {'id': offre.idoffre})}}">Reclamer</a></strong></li>
+                            </ul>
+                        </div>
+                        <div class="portfolio-description">
+                            <h2>Description</h2>
+                            <p>
+                                {{ offre.description }}
+                            </p>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </section><!-- End Portfolio Details Section -->
+
+    </main><!-- End #main -->
+
+{% endblock %}

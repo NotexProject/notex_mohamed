@@ -1,0 +1,126 @@
+{% extends 'base.back.html.twig' %}
+ {% block dashboard %}
+     <!-- Dashboard -->
+     <li class="menu-item active">
+         <a href="{{ asset ('admin/afficheAbonnement') }}" class="menu-link">
+             <i class="menu-icon tf-icons bx bx-home-circle"></i>
+             <div data-i18n="Analytics">Gestion abonnement</div>
+         </a>
+         <a href="{{ asset ('admin/ajoutA') }}" class="menu-link">
+             <i class="menu-icon tf-icons bx bx-home-circle"></i>
+             <div data-i18n="Analytics">Ajouter un abonnement</div>
+         </a>
+         <a href="{{ asset ('admin/afficheC') }}" class="menu-link">
+             <i class="menu-icon tf-icons bx bx-home-circle"></i>
+             <div data-i18n="Analytics">Gestion Compt</div>
+         </a>
+         <a href="{{ asset ('admin/ajoutC') }}" class="menu-link">
+             <i class="menu-icon tf-icons bx bx-home-circle"></i>
+             <div data-i18n="Analytics">Ajouter un Compte</div>
+         </a>
+
+     </li>
+
+
+
+
+     <li class="menu-item active">
+         <a href="{{ path('app_offre_index') }}" class="menu-link">
+             <i class="menu-icon tf-icons bx bx-home-circle"></i>
+             <div data-i18n="Analytics">Liste Offre</div>
+         </a>
+     </li>
+
+
+
+
+     <li class="menu-item active">
+         <a href="{{ path('app_offre_new') }}" class="menu-link">
+             <i class="menu-icon tf-icons bx bx-home-circle"></i>
+             <div data-i18n="Analytics">Ajouter Offre</div>
+         </a>
+     </li>
+
+
+
+
+
+     <li class="menu-item active">
+         <a href="{{ path('app_reclamation_index') }}" class="menu-link">
+             <i class="menu-icon tf-icons bx bx-home-circle"></i>
+             <div data-i18n="Analytics">Liste Reclamation</div>
+         </a>
+     </li>
+
+
+
+
+     <li class="menu-item active">
+         <a href="{{ path('app_reclamation_new') }}" class="menu-link">
+             <i class="menu-icon tf-icons bx bx-home-circle"></i>
+             <div data-i18n="Analytics">Ajouter Reclamation</div>
+         </a>
+     </li>
+     <li class="menu-item active">
+         <a href="" class="menu-link">
+             <i class="menu-icon tf-icons bx bx-home-circle"></i>
+             <div data-i18n="Analytics">Gestion des évènements</div>
+         </a>
+     </li>
+     <!-- Dashboard -->
+     <li class="menu-item active">
+         <a href="{{ asset ('afficheC') }}" class="menu-link">
+             <i class="menu-icon tf-icons bx bx-home-circle"></i>
+             <div data-i18n="Analytics">Gestion des commentaires</div>
+         </a>
+     </li>
+     <li class="menu-item active">
+         <a href="{{ asset ('afficheP') }}" class="menu-link">
+             <i class="menu-icon tf-icons bx bx-home-circle"></i>
+             <div data-i18n="Analytics">Gestion des participation</div>
+         </a>
+     </li>
+ {% endblock %}
+{% block content  %}
+    <div class="card">
+        <h5 class="card-header">Liste des évènements </h5>
+        <div class="table-responsive text-nowrap">
+            <table class="table">
+                <thead>
+                <tr>
+                    <th> ID</th>
+                    <th>Nom_responsable</th>
+                    <th>Nom_evenenment</th>
+                    <th>Date_evenements</th>
+                    <th>Categorie_evenement</th>
+                    <th>localisation_evenement</th>
+                    <th>nombre_places</th>
+                    <th>total_frais</th>
+                    <th>image</th>
+                    <th>action</th>
+                </tr>
+                </thead>
+                <tbody class="table-border-bottom-0">
+                <tr {% for e in evenements %}>
+                    <td>{{ e.idEvent }}</td>
+                    <td>{{ e.nomResponsable }}</td>
+                    <td>{{ e.nomEvent }}</td>
+                    <td>{{e.dateEvent|date('d-m-Y')}}</td>
+                    <td>{{ e.categoryEvent }}</td>
+                    <td>{{ e.localisationEvent }}</td>
+                    <td>{{ e.nbrPlaces }}</td>
+                    <td>{{ e.totalFrais }}</td>
+                    <td>{{ e.image }}</td>
+                    <td> <a href="{{ path('deleteEvent',{'idEvent':e.idEvent}) }}"> <button type="submit" class="btn btn-danger">Delete</button></a> <a href="{{ path('UpdateE',{'idEvent':e.idEvent}) }}"> <button type="submit" class="btn btn-info">Edit</button></a> </td>
+
+
+                </tr {% endfor %}>
+
+
+                </tbody>
+            </table>
+            <a href="{{ path('AjouterE') }}"><button type="submit" class="btn btn-success">Ajouter</button></a>
+        </div>
+    </div>
+    <a href="{{ path('calendar_index') }}"><button type="submit" class="btn btn-success"> Gérer le calendrier</button></a>
+{% endblock %}

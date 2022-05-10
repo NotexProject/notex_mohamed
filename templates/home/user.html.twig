@@ -1,0 +1,175 @@
+{% extends 'base.html.twig' %}
+{% block title %}Notex User{% endblock %}
+{% block content %}
+    <!--================================================================================================================-->
+    </br>
+    </br>
+    </br>
+    <!-- ======= Testimonials Section ======= -->
+    <section id="testimonials" class="testimonials">
+        <div class="container" data-aos="fade-up">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                    <div class="testimonial-item">
+                        <img src="{{asset('userimg/87475521_213038903424392_1341503202062761984_n5452448b0eb31406c9b7b203344f349c.jpeg')}}" class="testimonial-img" alt="">
+                        <h3>Rjeb Ahmed</h3>
+                        <h4>ahmed.rjeb@esprit.tn</h4>
+                    </div>
+                </div><!-- End testimonial item -->
+            </div>
+            <div class="swiper-pagination"></div>
+        </div>
+    </section><!-- End Testimonials Section -->
+
+    <!--================================================================================================================-->
+    <!-- ======= Featured Services Section ======= -->
+    <section id="featured-services" class="featured-services">
+        <div class="container">
+
+            <div class="row gy-4">
+
+                <div class="col-xl-3 col-md-6 d-flex" data-aos="zoom-out">
+                    <div class="service-item position-relative">
+                        <div class="icon"><i class="bi bi-activity icon"></i></div>
+                        <h4><a href="{{ path('reclamations_moi') }}" class="stretched-link">Historique Reclamation</a></h4>
+                        <p>Consulter vos reclamations peut nous aider a resoudre les probleme.</p>
+                    </div>
+                </div><!-- End Service Item -->
+
+                <div class="col-xl-3 col-md-6 d-flex" data-aos="zoom-out" data-aos-delay="200">
+                    <div class="service-item position-relative">
+                        <div class="icon"><i class="bi bi-bounding-box-circles icon"></i></div>
+                        <h4><a href="{{ path('toutesles_offress') }}" class="stretched-link">Tous les Offres</a></h4>
+                        <p>Navigez et chercher ce que vous voulez.</p>
+                    </div>
+                </div><!-- End Service Item -->
+
+
+
+                <div class="col-xl-3 col-md-6 d-flex" data-aos="zoom-out" data-aos-delay="600">
+                    <div class="service-item position-relative">
+                        <div class="icon"><i class="bi bi-broadcast icon"></i></div>
+                        <h4><a href="{{ path('offres_moi') }}" class="stretched-link">Mes Offres</a></h4>
+                        <p>Mes Offres et mes demandes</p>
+                    </div>
+                </div><!-- End Service Item -->
+
+            </div>
+
+        </div>
+    </section><!-- End Featured Services Section -->
+
+
+    <!--================================================================================================================-->
+    <!-- ======= Call To Action Section ======= -->
+    <section id="cta" class="cta">
+        <div class="container" data-aos="zoom-out">
+
+            <div class="row g-5">
+
+                <div class="col-lg-8 col-md-6 content d-flex flex-column justify-content-center order-last order-md-first">
+                    <h3>créer votre <em>Offre</em> et trouver votre choix</h3>
+                    <p> quelque soit votre choix nous sommes ici pour vous aide a le trouver.</p>
+                    <a class="cta-btn align-self-start" href="{{ path('offre_new') }}">Créer offre</a>
+                </div>
+
+                <div class="col-lg-4 col-md-6 order-first order-md-last d-flex align-items-center">
+                    <div class="img">
+                        <img src="{{asset('front-office/assets/img/formulaire.webp')}}" alt="" class="img-fluid">
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </section><!-- End Call To Action Section -->
+
+    <!--================================================================================================================-->
+    <!-- ======= Portfolio Section ======= -->
+    <section id="portfolio" class="portfolio" data-aos="fade-up">
+
+        <div class="container">
+
+            <div class="section-header">
+                <h2>Mes Offres</h2>
+                <p>trouver ce que vous cherchez des offres pour sponsoriser votre contenu cree ou bien chercher votre representateur.</p>
+            </div>
+
+        </div>
+
+        <div class="container-fluid" data-aos="fade-up" data-aos-delay="200">
+
+            <div class="portfolio-isotope" data-portfolio-filter="*" data-portfolio-layout="masonry" data-portfolio-sort="original-order">
+
+                <ul class="portfolio-flters">
+                    <li data-filter="*" class="filter-active">Toutes</li>
+                    <li data-filter=".filter-Demande_Sponsoring">Demande Sponsoring</li>
+                    <li data-filter=".filter-Demande_Partenaire">Demande Partenaire</li>
+                    <li data-filter=".filter-Besoin_de_CC_pour_Contrat">Besoin de CC pour Contrat</li>
+                    <li data-filter=".filter-Besoin_de_CC_pour_Publicite">Besoin de CC pour Publicite</li>
+                    <li data-filter=".filter-Besoin_de_CC_pour_Evennement">Besoin de CC pour Evennement</li>
+                </ul><!-- End Portfolio Filters -->
+                {% for offre in offres %}
+                <div class="row g-0 portfolio-container">
+
+
+
+
+                    <div class="col-xl-3 col-lg-4 col-md-6 portfolio-item filter-{{offre.typeoffre}}">
+                        <img src="{{ asset( 'uploads/'~offre.imgsrc) }}" class="img-fluid" alt="">
+                        <div class="portfolio-info">
+                            <h4 class="data-filter">{{ offre.nomoffre }}</h4>
+                            <a href="{{ asset('uploads/'~offre.imgsrc) }}" title="{{ offre.typeoffre }}" data-gallery="portfolio-gallery" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
+                            <a href="{{ path('offredetail', {'idoffre': offre.idoffre}) }}" title="More Details" class="details-link"><i class="bi bi-link-45deg"></i></a>
+                            <form method="post" action="{{ path('offre_delete', {'idoffre': offre.idoffre}) }}" onsubmit="return confirm('Vous ete sur de supprimer cette offre?');">
+                                <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ offre.idoffre) }}">
+                                <button   class="btnsupp" >Supprimer</button>
+                            </form>
+                        </div>
+                    </div><!-- End Portfolio Item -->
+
+                    {% else %}
+
+
+                        <div class="col-xl-3 col-lg-4 col-md-6 portfolio-item ">
+                            <img src="" class="img-fluid" alt="">
+                            <div class="portfolio-info">
+                                <h4>Il n'ya pas d'offre</h4>
+                                <a href="" title="App 1" data-gallery="portfolio-gallery" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
+                                <a href="" title="More Details" class="details-link"><i class="bi bi-link-45deg"></i></a>
+                            </div>
+                        </div>
+
+                    {% endfor %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                </div><!-- End Portfolio Container -->
+
+            </div>
+
+        </div>
+    </section><!-- End Portfolio Section -->
+
+
+
+
+
+
+    <!-- ========================================================================================================================= -->
+
+
+{% endblock %}

@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+{% block body %}
+    <table class="table" border="2">
+        <thead>
+        <tr>
+
+            <th style="text-align: center">Nom Offre</th>
+            <th style="text-align: center"> Date Debut </th>
+            <th style="text-align: center"> Date Fin</th>
+            <th style="text-align: center">Description</th>
+            <th style="text-align: center">Image</th>
+            <th style="text-align: center">Type Offre</th>
+
+
+        </tr>
+        </thead>
+        <tbody>
+        {% for offre in offres%}
+            <tr>
+
+                <td style="text-align: center" >{{ offre.nomoffre }}</td>
+                <td style="text-align: center">{{ offre.datedebut ? offre.datedebut|date('Y-m-d') : '' }}</td>
+                <td style="text-align: center">{{ offre.datefin ? offre.datefin|date('Y-m-d') : '' }}</td>
+                <td style="text-align: center">{{ offre.description }}</td>
+
+                <td style="text-align: center"><img src="{{( 'uploads/'~offre.imgsrc) }} " style="width:70px;height:70px;"></td>
+
+                <td style="text-align: center">{{ offre.typeoffre }}</td>
+
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <section id="portfolio" class="portfolio" data-aos="fade-up">
+
+        <div class="container">
+
+            <div class="section-header">
+                <h2>Toutes les Offres</h2>
+                <p>trouver ce que vous cherchez des offres pour sponsoriser votre contenu cree ou bien chercher votre representateur.</p>
+            </div>
+
+        </div>
+
+        <div class="container-fluid" data-aos="fade-up" data-aos-delay="200">
+
+            <div class="portfolio-isotope" data-portfolio-filter="*" data-portfolio-layout="masonry" data-portfolio-sort="original-order">
+
+                <ul class="portfolio-flters">
+                    <li data-filter="*" class="filter-active">Toutes</li>
+                    <li data-filter=".filter-Demande_Sponsoring">Demande Sponsoring</li>
+                    <li data-filter=".filter-Demande_Partenaire">Demande Partenaire</li>
+                    <li data-filter=".filter-Besoin_de_CC_pour_Contrat">Besoin de CC pour Contrat</li>
+                    <li data-filter=".filter-Besoin_de_CC_pour_Publicite">Besoin de CC pour Publicite</li>
+                    <li data-filter=".filter-Besoin_de_CC_pour_Evennement">Besoin de CC pour Evennement</li>
+                </ul><!-- End Portfolio Filters -->
+                {% for offre in offres %}
+
+                <div class="row g-0 portfolio-container">
+                    <div class="col-xl-3 col-lg-4 col-md-6 portfolio-item filter-{{offre.typeoffre}}">
+                        <img src="{{ asset( 'uploads/'~offre.imgsrc) }}" class="img-fluid" alt="">
+                        <div class="portfolio-info">
+                            <h4 class="data-filter">{{ offre.nomoffre }}</h4>
+                            <a href="{{ asset('uploads/'~offre.imgsrc) }}" title="{{ offre.typeoffre }}" data-gallery="portfolio-gallery" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
+                            <a href="{{ path('offredetail', {'idoffre': offre.idoffre}) }}" title="More Details" class="details-link"><i class="bi bi-link-45deg"></i></a>
+                        </div>
+                    </div><!-- End Portfolio Item -->
+
+                    {% else %}
+
+
+                        <div class="col-xl-3 col-lg-4 col-md-6 portfolio-item ">
+                            <img src="" class="img-fluid" alt="">
+                            <div class="portfolio-info">
+                                <h4>Il n'ya pas d'offre</h4>
+                                <a href="" title="App 1" data-gallery="portfolio-gallery" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
+                                <a href="" title="More Details" class="details-link"><i class="bi bi-link-45deg"></i></a>
+                            </div>
+                        </div>
+
+                    {% endfor %}
+
+                </div><!-- End Portfolio Container -->
+
+            </div>
+
+        </div>
+    </section><!-- End Portfolio Section -->
+
+
+{% endblock %}
+</body>
+</html>

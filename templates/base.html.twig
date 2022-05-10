@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+    <head>
+        <meta charset="UTF-8">
+        <title>{% block title %}Bienvenue a Notex{% endblock %}</title>
+        <meta content="" name="description">
+        <meta content="" name="keywords">
+        {% block stylesheets %}
+            <!-- Favicons -->
+            <link href="{{ asset ('assets/img/notex.png')}}" rel="icon">
+            <link href="{{ asset ('assets/img/apple-touch-icon.png')}}" rel="apple-touch-icon">
+
+            <!-- Google Fonts -->
+            <link rel="preconnect" href="https://fonts.googleapis.com">
+            <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+            <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Source+Sans+Pro:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600;1,700&display=swap" rel="stylesheet">
+
+            <!-- Vendor CSS Files -->
+            <link href="{{ asset ('assets/vendor/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">
+            <link href="{{ asset ('assets/vendor/bootstrap-icons/bootstrap-icons.css')}}" rel="stylesheet">
+            <link href="{{ asset ('assets/vendor/aos/aos.css')}}" rel="stylesheet">
+            <link href="{{ asset ('assets/vendor/glightbox/css/glightbox.min.css')}}" rel="stylesheet">
+            <link href="{{ asset ('assets/vendor/swiper/swiper-bundle.min.css')}}" rel="stylesheet">
+
+            <!-- Variables CSS Files. Uncomment your preferred color scheme -->
+            <link href="{{ asset ('assets/css/variables.css')}}" rel="stylesheet">
+            <!-- <link href="{{ asset ('assets/css/variables-blue.css')}}" rel="stylesheet"> -->
+            <!-- <link href="{{ asset ('assets/css/variables-green.css')}}" rel="stylesheet"> -->
+            <!-- <link href="{{ asset ('assets/css/variables-orange.css')}}" rel="stylesheet"> -->
+            <!-- <link href="{{ asset ('assets/css/variables-purple.css')}}" rel="stylesheet"> -->
+            <!-- <link href="{{ asset ('assets/css/variables-red.css')}}" rel="stylesheet"> -->
+            <!-- <link href="{{ asset ('assets/css/variables-pink.css')}}" rel="stylesheet"> -->
+
+            <!-- Template Main CSS File -->
+            <link href="{{ asset ('assets/css/main.css')}}" rel="stylesheet">
+        {% endblock %}
+        {% block javascripts %}
+            <a href="#" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+            <div id="preloader"></div>
+            <!-- Vendor JS Files -->
+            <script src="{{asset('assets/vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
+            <script src="{{asset('assets/vendor/aos/aos.js')}}"></script>
+            <script src="{{asset('assets/vendor/glightbox/js/glightbox.min.js')}}"></script>
+            <script src="{{asset('assets/vendor/isotope-layout/isotope.pkgd.min.js')}}"></script>
+            <script src="{{asset('assets/vendor/swiper/swiper-bundle.min.js')}}"></script>
+            <script src="{{asset('assets/vendor/php-email-form/validate.js')}}"></script>
+
+            <!-- Template Main JS File -->
+            <script src="{{asset('assets/js/main.js')}}"></script>
+
+        {% endblock %}
+    </head>
+    <br>
+        {% block header  %}
+            <!-- ======= Header ======= -->
+            <header id="header" class="header fixed-top" data-scrollto-offset="0">
+                <div class="container-fluid d-flex align-items-center justify-content-between">
+
+                    <a href="{{ path('app_home') }}" class="logo d-flex align-items-center scrollto me-auto me-lg-0">
+                        <!-- Uncomment the line below if you also wish to use an image logo -->
+                         <h1>Notex<span>.</span></h1>
+                        <img src="{{asset('assets/img/notex.png')}}" alt="">
+                    </a>
+
+                    <nav id="navbar" class="navbar">
+                        <ul>
+
+                            <li class="dropdown"><a href="#"><span>Home</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
+                                <ul>
+                                    <li><a href="{{ path('app_home') }}" class="active">Home</a></li>
+                                    <li><a href="{{ path('app_user') }}">Page Utilisateur</a></li>
+                                    <li><a href="{{ path('reclamations_moi') }}">Mes Reclamations</a></li>
+                                    <li><a href="{{ path('offres_moi') }}">Mes Offres</a></li>
+                                    <li><a href="{{ path('impr') }}">Imprimer toutes les Offre</a></li>
+                                </ul>
+                            </li>
+
+                            <li class="dropdown"><a href="{{ path('toutesles_offress') }}"><span>Offre</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
+                                <ul>
+                                    <li><a href="{{ path('offre_new') }}" class="active">Cree + Offre </a></li>
+                                    <li><a href="{{ path('toutesles_offress') }}">Tous les Offres</a></li>
+                                    <li><a href="{{ path('offres_moi') }}">Mes Offres</a></li>
+                                    <li><a href="{{ path('impr') }}">Imprimer toutes les Offre</a></li>
+                                </ul>
+                            </li>
+
+                            <li><a class="nav-link scrollto" href="{{ path('app_home') }}#about">Connaître</a></li>
+                            <li><a class="nav-link scrollto" href="{{ path('app_home') }}#services">Services</a></li>
+                            <li><a class="nav-link scrollto" href="{{ path('app_home') }}#team">Equipe</a></li>
+                            <li><a class="nav-link scrollto" href="{{ path('indexfront') }}">Evenements</a></li>
+                            <li class="dropdown"><a href="{{ path('FrontafficheA') }}"><span>Abonnements</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
+
+                            <li><a class="nav-link scrollto" href="{{ path('app_home') }}#contact">Nous contacter</a></li>
+                        </ul>
+                        <i class="bi bi-list mobile-nav-toggle d-none"></i>
+                    </nav><!-- .navbar -->
+
+                    <a class="btn-getstarted scrollto" href="app_logout">Logout</a>
+
+                    <a class="btn-getstarted scrollto" href="afficheAbonnement">Administrationc</a>
+
+                </div>
+            </header><!-- End Header -->
+        {% endblock %}
+
+{% block content  %}
+    <section id="hero-animated" class="hero-animated d-flex align-items-center">
+        <div class="container d-flex flex-column justify-content-center align-items-center text-center position-relative" data-aos="zoom-out">
+            <img src="{{ asset ('assets/img/notex.png')}}" class="img-fluid animated">
+            <h2>Bienvenue à <span>Notex</span></h2>
+            <p>Notex est une plat-forme qui assure principalement la communication des créateurs de contenu et les sponsors</p>
+            <div class="d-flex">
+                <a href="#about" class="btn-get-started scrollto">Connaître</a>
+                <a href="https://youtu.be/_bAq_tbymEo" class="glightbox btn-watch-video d-flex align-items-center"><i class="bi bi-play-circle"></i><span>Regarder Video</span></a>
+            </div>
+        </div>
+    </section>
+
+    <main id="main">
+        <section id="testimonials" class="testimonials">
+            <div class="container" data-aos="fade-up">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                        <div class="testimonial-item">
+                            <img src="{{asset('userimg/profile.png')}}" class="testimonial-img" alt="">
+                            <h3>{{ app.user.fullname }}</h3>
+                            <h4>{{ app.user.username }}</h4>
+                        </div>
+                    </div><!-- End testimonial item -->
+                </div>
+                <div class="swiper-pagination"></div>
+            </div>
+        </section>
+
+
+
+        <!-- ======= About Section ======= -->
+        <section id="about" class="about">
+            <div class="container" data-aos="fade-up">
+
+                <div class="section-header">
+                    <h2>Nous connaître</h2>
+                    <p>Nous sommes des étudiants spécialisé au développement developpement informatique notre objectif c'est votre satisfaction et vous offrire des solutions qui facilitent votre vie .</p>
+                </div>
+
+                <div class="row g-4 g-lg-5" data-aos="fade-up" data-aos-delay="200">
+
+                    <div class="col-lg-5">
+                        <div class="about-img">
+                            <img src="{{ asset ('assets/img/DevGeeks.png')}}" class="img-fluid" alt="">
+                        </div>
+                    </div>
+
+                    <div class="col-lg-7">
+                        <h3 class="pt-0 pt-lg-5">Issue du terrain, et ayant appris à utiliser la devloppement web de manière très pratique, ont souhaitons aujourd’hui exporter notre savoir faire et nous engager à vos côtés</h3>
+
+                        <!-- Tabs -->
+                        <ul class="nav nav-pills mb-3">
+                            <li><a class="nav-link active" data-bs-toggle="pill" href="#tab1">Web</a></li>
+                            <li><a class="nav-link" data-bs-toggle="pill" href="#tab2">Mobile</a></li>
+                            <li><a class="nav-link" data-bs-toggle="pill" href="#tab3">Descktop</a></li>
+                        </ul><!-- End Tabs -->
+
+                        <!-- Tab Content -->
+                        <div class="tab-content">
+
+                            <div class="tab-pane fade show active" id="tab1">
+
+                                <p class="fst-italic">Grâce à une bonne compréhension et une expérience réussi de la dev web , nous vous aiderons et vous accompagnerons dans la mise en place et l'animation de votre système de management (dit "de la qualité"). Le but étant que vous fassiez de la qualité, un principe même de management. Notre cheval de bataille est de fusionner l'existant, votre réalité, au système de management de la qualité, développé fréquemment pour l'obtention nécessaire de la certification.</p>
+
+                                <div class="d-flex align-items-center mt-4">
+                                    <i class="bi bi-check2"></i>
+                                    <h4>offrire une bonne experiance</h4>
+                                </div>
+                                <p>Rendre nos services facile pour que tous le monde puisse utiliser nos technologie et facilite les taches.
+                                </p>
+
+                                <div class="d-flex align-items-center mt-4">
+                                    <i class="bi bi-check2"></i>
+                                    <h4>réussir la satisfaction des utilisateurs</h4>
+                                </div>
+                                <p>la satisfaction des utilisateurs c'est notre but ou objectiv on essayons de trouver la solution pour vous satisfaire.</p>
+
+                                <div class="d-flex align-items-center mt-4">
+                                    <i class="bi bi-check2"></i>
+                                    <h4>On s'adapte tous seule </h4>
+                                </div>
+                                <p>Souvent, mal comprise et mal aimée, Dev web a fait naître au cœur de l’entreprise certifiée, un SMQ annexe. Générant ainsi des doublons d’analyses, de réunions, d’indicateurs, et ne permettant plus à ce dernier de jouer son véritable rôle: devenir un outil indispensable d’aide à la prise de décisions. Obtenir l’adhésion de tous aux principes révélés par la norme Dev web; c’est là que la qualité commence! Les véritables managers, décisionnaires et acteurs sont les leaders de l’organisme et non le consultant. Dans cet état d’esprit, nous saurons trouver notre place, pour révéler le meilleur de vous-même.</p>
+
+                            </div><!-- End Tab 1 Content -->
+
+                            <div class="tab-pane fade show" id="tab2">
+
+                                <p class="fst-italic">On essayons de deployer les memes utilites de web en mobile pour que vous puissez benificier de multi platforme</p>
+
+                                <div class="d-flex align-items-center mt-4">
+                                    <i class="bi bi-check2"></i>
+                                    <h4>etre disponible dans tous les technologie memes pour le mobile</h4>
+                                </div>
+                                <p>nos application mobiles sont fiable rapides et utiles</p>
+
+                            </div><!-- End Tab 2 Content -->
+
+                            <div class="tab-pane fade show" id="tab3">
+
+                                <p class="fst-italic">Notre conception pense aussi a l'equipe . </p>
+
+                                <div class="d-flex align-items-center mt-4">
+                                    <i class="bi bi-check2"></i>
+                                    <h4>L'application aussi a ete devlopper dans une plateforme descktope</h4>
+                                </div>
+                                <p>c'est notre devoire de organiser toutes les donnee qui on ete gener et de penser a l'equipe qui utlise cette application .</p>
+                            </div><!-- End Tab 3 Content -->
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+        </section><!-- End About Section -->
+
+        <!-- ======= Clients Section ======= -->
+        <section id="clients" class="clients">
+            <div class="container" data-aos="zoom-out">
+
+                <div class="clients-slider swiper">
+                    <div class="swiper-wrapper align-items-center">
+                        <div class="swiper-slide"><img src="{{ asset ('assets/img/Logo_ESPRIT_Ariana.jpg')}}" class="img-fluid" alt=""></div>
+                        <div class="swiper-slide"><img src="{{ asset ('assets/img/notex.png" class="img-fluid')}}" alt=""></div>
+                        <div class="swiper-slide"><img src="{{ asset ('assets/img/DevGeeks.png" class="img-fluid')}}" alt=""></div>
+                        <div class="swiper-slide"><img src="{{ asset ('assets/img/content-creator-logo-design-template-dark-blue-background-pictorial-concept-red-camcorder-play-button-icon-220886671.jpg')}}" class="img-fluid" alt=""></div>
+                        <div class="swiper-slide"><img src="{{ asset ('assets/img/sponsor-stamp-design-template-67630e7e4496c4e2a046fee0a7ab788c_screen.jpg')}}" class="img-fluid" alt=""></div>
+                        <div class="swiper-slide"><img src="{{ asset ('assets/img/symfony.png')}}" class="img-fluid" alt=""></div>
+                        <div class="swiper-slide"><img src="{{ asset ('assets/img/phpstorm_logo_300x300.png')}}" class="img-fluid" alt=""></div>
+
+                    </div>
+                </div>
+
+            </div>
+        </section><!-- End Clients Section -->
+
+
+
+
+
+
+
+        <!-- ======= Services Section ======= -->
+        <section id="services" class="services">
+            <div class="container" data-aos="fade-up">
+
+                <div class="section-header">
+                    <h2>Nos Services</h2>
+                    <p>Notex est une plat-forme qui assure principalement la communication des créateurs de contenu et les sponsors(brands),proposition des offres,participation à des événements et d'autres services. cette application est une grande opportunités pour chaque client qui trouvera tout avec un simple clic</p>
+                </div>
+
+                <div class="row gy-5">
+
+                    <div class="col-xl-4 col-md-6" data-aos="zoom-in" data-aos-delay="200">
+                        <div class="service-item">
+                            <div class="img">
+                                <img src="{{ asset ('assets/img/services-1.jpg')}}" class="img-fluid" alt="">
+                            </div>
+                            <div class="details position-relative">
+                                <div class="icon">
+                                    <i class="bi bi-activity"></i>
+                                </div>
+                                <a href="#" class="stretched-link">
+                                    <h3>Créateur de contenu</h3>
+                                </a>
+                                <p>trouver facilement un sponsor grace au a notre plateforme.</p>
+                            </div>
+                        </div>
+                    </div><!-- End Service Item -->
+
+                    <div class="col-xl-4 col-md-6" data-aos="zoom-in" data-aos-delay="300">
+                        <div class="service-item">
+                            <div class="img">
+                                <img src="{{ asset ('assets/img/services-2.jpg')}}" class="img-fluid" alt="">
+                            </div>
+                            <div class="details position-relative">
+                                <div class="icon">
+                                    <i class="bi bi-broadcast"></i>
+                                </div>
+                                <a href="#" class="stretched-link">
+                                    <h3>Sponsor</h3>
+                                </a>
+                                <p>trouver facilement un ou plusieur createur de contenu pour presenter la marque.</p>
+                            </div>
+                        </div>
+                    </div><!-- End Service Item -->
+
+                    <div class="col-xl-4 col-md-6" data-aos="zoom-in" data-aos-delay="400">
+                        <div class="service-item">
+                            <div class="img">
+                                <img src="{{ asset ('assets/img/services-3.jpg')}}" class="img-fluid" alt="">
+                            </div>
+                            <div class="details position-relative">
+                                <div class="icon">
+                                    <i class="bi bi-easel"></i>
+                                </div>
+                                <a href="#" class="stretched-link">
+                                    <h3>événement</h3>
+                                </a>
+                                <p>organiser des evennements pour animer l'embiance dans le but de connaitre les elites de createur de contenu.</p>
+                            </div>
+                        </div>
+                    </div><!-- End Service Item -->
+                </div>
+
+            </div>
+        </section><!-- End Services Section -->
+
+
+
+
+
+
+
+
+
+        <!-- ======= Team Section ======= -->
+        <section id="team" class="team">
+            <div class="container" data-aos="fade-up">
+
+                <div class="section-header">
+                    <h2>Notre équipe</h2>
+                    <p>« Le groupe Dev Geeks, c’est une idée, un projet, et une épopée, toujours en marche, car il embrasse le futur.Lancée il y a un peut, l’aventure était mue par notre passion pour la technologie, notre ardente volonté de l’apprivoiser et d’en optimiser les usages tant dans la sphère individuelle et familiale, que dans le monde de l’entreprise. » </p>
+                </div>
+
+                <div class="row gy-5">
+
+                    <div class="col-xl-4 col-md-6 d-flex" data-aos="zoom-in" data-aos-delay="200">
+                        <div class="team-member">
+                            <div class="member-img">
+                                <img src="{{ asset ('assets/img/team/87475521_213038903424392_1341503202062761984_n.jpg')}}" class="img-fluid" alt="">
+                            </div>
+                            <div class="member-info">
+                                <div class="social">
+                                    <a href=""><i class="bi bi-twitter"></i></a>
+                                    <a href=""><i class="bi bi-facebook"></i></a>
+                                    <a href=""><i class="bi bi-instagram"></i></a>
+                                    <a href=""><i class="bi bi-linkedin"></i></a>
+                                </div>
+                                <h4>RJEB Ahmed</h4>
+                                <span>Etudiant 3emm A7</span>
+                            </div>
+                        </div>
+                    </div><!-- End Team Member -->
+
+                    <div class="col-xl-4 col-md-6 d-flex" data-aos="zoom-in" data-aos-delay="400">
+                        <div class="team-member">
+                            <div class="member-img">
+                                <img src="{{ asset ('assets/img/team/57221409_2305623862858318_8731196968308572160_n.jpg')}}" class="img-fluid" alt="">
+                            </div>
+                            <div class="member-info">
+                                <div class="social">
+                                    <a href=""><i class="bi bi-twitter"></i></a>
+                                    <a href=""><i class="bi bi-facebook"></i></a>
+                                    <a href=""><i class="bi bi-instagram"></i></a>
+                                    <a href=""><i class="bi bi-linkedin"></i></a>
+                                </div>
+                                <h4>SLAMA Mohamed</h4>
+                                <span>Etudiant 3emm A7</span>
+                            </div>
+                        </div>
+                    </div><!-- End Team Member -->
+
+                    <div class="col-xl-4 col-md-6 d-flex" data-aos="zoom-in" data-aos-delay="600">
+                        <div class="team-member">
+                            <div class="member-img">
+                                <img src="{{ asset ('assets/img/team/251071199_5196448337038065_888864044926987408_n.jpg')}}" class="img-fluid" alt="">
+                            </div>
+                            <div class="member-info">
+                                <div class="social">
+                                    <a href=""><i class="bi bi-twitter"></i></a>
+                                    <a href=""><i class="bi bi-facebook"></i></a>
+                                    <a href=""><i class="bi bi-instagram"></i></a>
+                                    <a href=""><i class="bi bi-linkedin"></i></a>
+                                </div>
+                                <h4>SRAIRI Asma</h4>
+                                <span>Etudiant 3emm A7</span>
+                            </div>
+                        </div>
+                    </div><!-- End Team Member -->
+
+                </div>
+
+                <div class="row gy-5">
+
+                    <div class="col-xl-4 col-md-6 d-flex" data-aos="zoom-in" data-aos-delay="200">
+                        <div class="team-member">
+                            <div class="member-img">
+                                <img src="{{ asset ('assets/img/team/48382030_1839210879521279_148657343624642560_n.jpg')}}" class="img-fluid" alt="">
+                            </div>
+                            <div class="member-info">
+                                <div class="social">
+                                    <a href=""><i class="bi bi-twitter"></i></a>
+                                    <a href=""><i class="bi bi-facebook"></i></a>
+                                    <a href=""><i class="bi bi-instagram"></i></a>
+                                    <a href=""><i class="bi bi-linkedin"></i></a>
+                                </div>
+                                <h4>MELKI Yossri</h4>
+                                <span>Etudiant 3emm A7</span>
+                            </div>
+                        </div>
+                    </div><!-- End Team Member -->
+
+                    <div class="col-xl-4 col-md-6 d-flex" data-aos="zoom-in" data-aos-delay="400">
+                        <div class="team-member">
+                            <div class="member-img">
+                                <img src="{{ asset ('assets/img/team/89530937_1712636665544484_1868824061006577664_n.jpg')}}" class="img-fluid" alt="">
+                            </div>
+                            <div class="member-info">
+                                <div class="social">
+                                    <a href=""><i class="bi bi-twitter"></i></a>
+                                    <a href=""><i class="bi bi-facebook"></i></a>
+                                    <a href=""><i class="bi bi-instagram"></i></a>
+                                    <a href=""><i class="bi bi-linkedin"></i></a>
+                                </div>
+                                <h4>AROUA Amira</h4>
+                                <span>Etudiant 3emm A7</span>
+                            </div>
+                        </div>
+                    </div><!-- End Team Member -->
+
+
+
+                </div>
+
+            </div>
+        </section><!-- End Team Section -->
+
+
+
+        <!-- ======= Contact Section ======= -->
+        <section id="contact" class="contact">
+            <div class="container">
+
+                <div class="section-header">
+                    <h2>Nous contacter</h2>
+                    <p>Pour nous contater veuillez trouvez tous les information ci-dessou .</p>
+                </div>
+
+            </div>
+
+            <div class="map">
+
+                <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d12762.505112603629!2d10.1893674!3d36.8992878!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12e2cb7454c6ed51%3A0x683b3ab5565cd357!2sEsprit%20Pr%C3%A9pa!5e0!3m2!1sfr!2stn!4v1650081273914!5m2!1sfr!2stn" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div><!-- End Google Maps -->
+
+            <div class="container">
+
+                <div class="row gy-5 gx-lg-5">
+
+                    <div class="col-lg-4">
+
+                        <div class="info">
+                            <h3>Rester en contact</h3>
+                            <p>on vous attends toujours.</p>
+
+                            <div class="info-item d-flex">
+                                <i class="bi bi-geo-alt flex-shrink-0"></i>
+                                <div>
+                                    <h4>Localisation:</h4>
+                                    <p>Avenue Fethi Zouhir, Cebalat Ben Ammar 2083</p>
+                                </div>
+                            </div><!-- End Info Item -->
+
+                            <div class="info-item d-flex">
+                                <i class="bi bi-envelope flex-shrink-0"></i>
+                                <div>
+                                    <h4>Email:</h4>
+                                    <p>ahmed.rjeb@esprit.tn</p>
+                                </div>
+                            </div><!-- End Info Item -->
+
+                            <div class="info-item d-flex">
+                                <i class="bi bi-phone flex-shrink-0"></i>
+                                <div>
+                                    <h4>Tel:</h4>
+                                    <p>+216 58 837 424</p>
+                                </div>
+                            </div><!-- End Info Item -->
+
+                        </div>
+
+                    </div>
+
+                    <div class="col-lg-8">
+                        <form action="{{ asset ('forms/contact.php')}}" method="post" role="form" class="php-email-form">
+                            <div class="row">
+                                <div class="col-md-6 form-group">
+                                    <input type="text" name="name" class="form-control" id="name" placeholder="Votre Nom" required>
+                                </div>
+                                <div class="col-md-6 form-group mt-3 mt-md-0">
+                                    <input type="email" class="form-control" name="email" id="email" placeholder="Votre Email" required>
+                                </div>
+                            </div>
+                            <div class="form-group mt-3">
+                                <input type="text" class="form-control" name="subject" id="subject" placeholder="Sujet" required>
+                            </div>
+                            <div class="form-group mt-3">
+                                <textarea class="form-control" name="message" placeholder="Message" required></textarea>
+                            </div>
+                            <div class="my-3">
+                                <div class="loading">en cours</div>
+                                <div class="error-message"></div>
+                                <div class="sent-message">Votre message a ete envoyer!</div>
+                            </div>
+                            <div class="text-center"><button type="submit">Envoyer Message</button></div>
+                        </form>
+                    </div><!-- End Contact Form -->
+
+                </div>
+
+            </div>
+        </section><!-- End Contact Section -->
+
+    </main><!-- End #main -->
+
+
+{% endblock %}
+
+        {% block footer  %}
+            <!-- ======= Footer ======= -->
+            <footer id="footer" class="footer">
+
+                <div class="footer-content">
+                    <div class="container">
+                        <div class="row">
+
+                            <div class="col-lg-3 col-md-6">
+                                <div class="footer-info">
+                                    <h3>Dev Geeks</h3>
+                                    <p>
+                                        Avenue Fethi Zouhir,<br>
+                                        Cebalat Ben Ammar 2083<br><br>
+                                        <strong>Tel:</strong> +1 5589 55488 55<br>
+                                        <strong>Email:</strong>ahmed.rjeb@esprit.tn<br>
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-2 col-md-6 footer-links">
+                                <h4>Liens utiles</h4>
+                                <ul>
+                                    <li><i class="bi bi-chevron-right"></i> <a href="#">Home</a></li>
+                                    <li><i class="bi bi-chevron-right"></i> <a href="#">Connaître</a></li>
+                                    <li><i class="bi bi-chevron-right"></i> <a href="#">Services</a></li>
+                                </ul>
+                            </div>
+
+
+
+
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="footer-legal text-center">
+                    <div class="container d-flex flex-column flex-lg-row justify-content-center justify-content-lg-between align-items-center">
+
+                        <div class="d-flex flex-column align-items-center align-items-lg-start">
+                            <div class="copyright">
+                                &copy; Copyright <strong><span>Notex</span></strong>. Tous les droits sont réservés
+                            </div>
+
+                        </div>
+
+                        <div class="social-links order-first order-lg-last mb-3 mb-lg-0">
+                            <a href="#" class="twitter"><i class="bi bi-twitter"></i></a>
+                            <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
+                            <a href="#" class="instagram"><i class="bi bi-instagram"></i></a>
+                            <a href="#" class="google-plus"><i class="bi bi-skype"></i></a>
+                            <a href="#" class="linkedin"><i class="bi bi-linkedin"></i></a>
+                        </div>
+
+                    </div>
+                </div>
+
+            </footer><!-- End Footer -->
+        {% endblock %}
+    </body>
+</html>

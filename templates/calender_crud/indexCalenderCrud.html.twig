@@ -1,0 +1,70 @@
+{% extends 'base.back.html.twig' %}
+
+{% block dashboard %}
+    <!-- Dashboard -->
+    <li class="menu-item active">
+        <a href="{{ asset ('afficheE') }}" class="menu-link">
+            <i class="menu-icon tf-icons bx bx-home-circle"></i>
+            <div data-i18n="Analytics">Gestion des évènements</div>
+        </a>
+    </li>
+    <li class="menu-item active">
+        <a href="{{ asset ('afficheC') }}" class="menu-link">
+            <i class="menu-icon tf-icons bx bx-home-circle"></i>
+            <div data-i18n="Analytics">Gestion des commentaires</div>
+        </a>
+    </li>
+    <li class="menu-item active">
+        <a href="{{ asset ('afficheP') }}" class="menu-link">
+            <i class="menu-icon tf-icons bx bx-home-circle"></i>
+            <div data-i18n="Analytics">Gestion des participation</div>
+        </a>
+    </li>
+{% endblock %}
+
+{% block content %}
+<div class="card">
+    <h5 class="card-header">Calendrier </h5>
+    <div class="table-responsive text-nowrap">
+        <table class="table">
+            <thead>
+        <tr>
+            <th>Id</th>
+            <th>Title</th>
+            <th>Start</th>
+            <th>End</th>
+            <th>Description</th>
+            <th>All_day</th>
+            <th>Background_color</th>
+            <th>Border_color</th>
+            <th>Text_color</th>
+            <th>actions</th>
+        </tr>
+        </thead>
+            <tbody class="table-border-bottom-0">
+        {% for calendar in calendars %}
+            <tr>
+                <td>{{ calendar.id }}</td>
+                <td>{{ calendar.title }}</td>
+                <td>{{ calendar.start ? calendar.start|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ calendar.end ? calendar.end|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ calendar.description }}</td>
+                <td>{{ calendar.allDay ? 'Yes' : 'No' }}</td>
+                <td>{{ calendar.backgroundColor }}</td>
+                <td>{{ calendar.borderColor }}</td>
+                <td>{{ calendar.textColor }}</td>
+                <td> <a href="{{ path('calendar_show',{'id': calendar.id}) }}"><button type="submit" class="btn btn-primary">Show</button></a> <a href="{{ path('calendar_edit', {'id': calendar.id}) }}"><button type="submit" class="btn btn-secondary">Edit</button></a> </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="10">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('calendar_new') }}"><button type="submit" class="btn btn-success">Ajouter</button></a>
+        <a href="{{ path('main') }}"><button type="submit" class="btn btn-warning">voir calendrier</button></a>
+
+{% endblock %}
+

@@ -1,0 +1,36 @@
+{% extends 'base.back.html.twig' %}
+ {% block dashboard %}
+     <!-- Dashboard -->
+     <!-- Dashboard -->
+     <li class="menu-item active">
+         <a href="{{ asset ('afficheC') }}" class="menu-link">
+             <i class="menu-icon tf-icons bx bx-home-circle"></i>
+             <div data-i18n="Analytics">Gestion des commentaire</div>
+         </a>
+     </li>
+     <li class="menu-item active">
+         <a href="{{ asset ('afficheE') }}" class="menu-link">
+             <i class="menu-icon tf-icons bx bx-home-circle"></i>
+             <div data-i18n="Analytics">Gestion des évènements</div>
+         </a>
+     </li>
+     <li class="menu-item active">
+         <a href="{{ asset ('afficheP') }}" class="menu-link">
+             <i class="menu-icon tf-icons bx bx-home-circle"></i>
+             <div data-i18n="Analytics">Gestion des participation</div>
+         </a>
+     </li>
+ {% endblock %}
+{% block content  %}
+    <!--partie ajout-->
+    <div class="templatemo-content-container">
+        <div class="templatemo-content-widget white-bg">
+
+            <h2 class="margin-bottom-10">Modifier un commentaire</h2>
+            {{form_start(form) }}
+            {% form_theme form 'bootstrap_4_layout.html.twig' %}
+            {{ form_end(form) }}
+
+        </div>
+    </div>
+{% endblock %}

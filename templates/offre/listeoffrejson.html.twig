@@ -1,0 +1,9 @@
+{% extends 'base-back.html.twig' %}
+
+{% block title %}Offre index{% endblock %}
+
+{% block content %}
+<h1>Offre index</h1>
+{{ offres|json_encode() }}
+
+{% endblock %}

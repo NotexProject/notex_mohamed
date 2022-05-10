@@ -58,28 +58,39 @@
             <!-- <img src="assets/img/logo.png" alt=""> -->
             <h1>Notex<span>.</span></h1>
         </a>
-
         <nav id="navbar" class="navbar">
             <ul>
 
                 <li class="dropdown"><a href="#"><span>Home</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
+                    <ul>
+                        <li><a href="{{ path('app_home') }}" class="active">Home</a></li>
+
+                        <li><a href="{{ path('reclamations_moi') }}">Mes Reclamations</a></li>
+                        <li><a href="{{ path('offres_moi') }}">Mes Offres</a></li>
+                        <li><a href="{{ path('impr') }}">Imprimer toutes les Offre</a></li>
+                    </ul>
                 </li>
 
-
-
-                <li><a class="nav-link scrollto" href="index.html#about">About</a></li>
-                <li><a class="nav-link scrollto" href="index.html#services">Services</a></li>
-
-                <li><a class="nav-link scrollto" href="index.html#team">Team</a></li>
-                <li><a href="blog.html">Blog</a></li>
-
-                <li class="dropdown"><a href="#"><span>Abonnements</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
-
+                <li class="dropdown"><a href="{{ path('toutesles_offress') }}"><span>Offre</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
+                    <ul>
+                        <li><a href="{{ path('offre_new') }}" class="active">Cree + Offre </a></li>
+                        <li><a href="{{ path('toutesles_offress') }}">Tous les Offres</a></li>
+                        <li><a href="{{ path('offres_moi') }}">Mes Offres</a></li>
+                        <li><a href="{{ path('impr') }}">Imprimer toutes les Offre</a></li>
+                    </ul>
                 </li>
-                <li><a class="nav-link scrollto" href="index.html#contact">Contact</a></li>
+
+                <li><a class="nav-link scrollto" href="{{ path('app_home') }}#about">Connaître</a></li>
+                <li><a class="nav-link scrollto" href="{{ path('app_home') }}#services">Services</a></li>
+                <li><a class="nav-link scrollto" href="{{ path('app_home') }}#team">Equipe</a></li>
+                <li><a class="nav-link scrollto" href="{{ path('indexfront') }}">Evenements</a></li>
+                <li class="dropdown"><a href="{{ path('FrontafficheA') }}"><span>Abonnements</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
+
+                <li><a class="nav-link scrollto" href="{{ path('app_home') }}#contact">Nous contacter</a></li>
             </ul>
             <i class="bi bi-list mobile-nav-toggle d-none"></i>
         </nav><!-- .navbar -->
+
 {% block button %}
         <a class="btn-getstarted scrollto" href="">Login/Sign up</a>
 {% endblock %}
@@ -220,8 +231,8 @@
         <div class="container" data-aos="fade-up">
 
             <div class="section-header">
-                <h2>Our Team</h2>
-                <p>Architecto nobis eos vel nam quidem vitae temporibus voluptates qui hic deserunt iusto omnis nam voluptas asperiores sequi tenetur dolores incidunt enim voluptatem magnam cumque fuga.</p>
+                <h2>Notre équipe</h2>
+                <p>« Le groupe Dev Geeks, c’est une idée, un projet, et une épopée, toujours en marche, car il embrasse le futur.Lancée il y a un peut, l’aventure était mue par notre passion pour la technologie, notre ardente volonté de l’apprivoiser et d’en optimiser les usages tant dans la sphère individuelle et familiale, que dans le monde de l’entreprise. » </p>
             </div>
 
             <div class="row gy-5">
@@ -229,7 +240,7 @@
                 <div class="col-xl-4 col-md-6 d-flex" data-aos="zoom-in" data-aos-delay="200">
                     <div class="team-member">
                         <div class="member-img">
-                            <img src="{{  asset ('assets/img/team/team-1.jpg')}} " class="img-fluid" alt="">
+                            <img src="{{ asset ('assets/img/team/87475521_213038903424392_1341503202062761984_n.jpg')}}" class="img-fluid" alt="">
                         </div>
                         <div class="member-info">
                             <div class="social">
@@ -238,8 +249,8 @@
                                 <a href=""><i class="bi bi-instagram"></i></a>
                                 <a href=""><i class="bi bi-linkedin"></i></a>
                             </div>
-                            <h4>Walter White</h4>
-                            <span>Chief Executive Officer</span>
+                            <h4>RJEB Ahmed</h4>
+                            <span>Etudiant 3emm A7</span>
                         </div>
                     </div>
                 </div><!-- End Team Member -->
@@ -247,7 +258,7 @@
                 <div class="col-xl-4 col-md-6 d-flex" data-aos="zoom-in" data-aos-delay="400">
                     <div class="team-member">
                         <div class="member-img">
-                            <img src="{{ asset ('') }}assets/img/team/team-2.jpg" class="img-fluid" alt="">
+                            <img src="{{ asset ('assets/img/team/57221409_2305623862858318_8731196968308572160_n.jpg')}}" class="img-fluid" alt="">
                         </div>
                         <div class="member-info">
                             <div class="social">
@@ -256,8 +267,8 @@
                                 <a href=""><i class="bi bi-instagram"></i></a>
                                 <a href=""><i class="bi bi-linkedin"></i></a>
                             </div>
-                            <h4>Sarah Jhonson</h4>
-                            <span>Product Manager</span>
+                            <h4>SLAMA Mohamed</h4>
+                            <span>Etudiant 3emm A7</span>
                         </div>
                     </div>
                 </div><!-- End Team Member -->
@@ -265,7 +276,7 @@
                 <div class="col-xl-4 col-md-6 d-flex" data-aos="zoom-in" data-aos-delay="600">
                     <div class="team-member">
                         <div class="member-img">
-                            <img src="{{ asset ('assets/img/team/team-3.jpg') }}" class="img-fluid" alt="">
+                            <img src="{{ asset ('assets/img/team/251071199_5196448337038065_888864044926987408_n.jpg')}}" class="img-fluid" alt="">
                         </div>
                         <div class="member-info">
                             <div class="social">
@@ -274,11 +285,53 @@
                                 <a href=""><i class="bi bi-instagram"></i></a>
                                 <a href=""><i class="bi bi-linkedin"></i></a>
                             </div>
-                            <h4>William Anderson</h4>
-                            <span>CTO</span>
+                            <h4>SRAIRI Asma</h4>
+                            <span>Etudiant 3emm A7</span>
                         </div>
                     </div>
                 </div><!-- End Team Member -->
+
+            </div>
+
+            <div class="row gy-5">
+
+                <div class="col-xl-4 col-md-6 d-flex" data-aos="zoom-in" data-aos-delay="200">
+                    <div class="team-member">
+                        <div class="member-img">
+                            <img src="{{ asset ('assets/img/team/48382030_1839210879521279_148657343624642560_n.jpg')}}" class="img-fluid" alt="">
+                        </div>
+                        <div class="member-info">
+                            <div class="social">
+                                <a href=""><i class="bi bi-twitter"></i></a>
+                                <a href=""><i class="bi bi-facebook"></i></a>
+                                <a href=""><i class="bi bi-instagram"></i></a>
+                                <a href=""><i class="bi bi-linkedin"></i></a>
+                            </div>
+                            <h4>MELKI Yossri</h4>
+                            <span>Etudiant 3emm A7</span>
+                        </div>
+                    </div>
+                </div><!-- End Team Member -->
+
+                <div class="col-xl-4 col-md-6 d-flex" data-aos="zoom-in" data-aos-delay="400">
+                    <div class="team-member">
+                        <div class="member-img">
+                            <img src="{{ asset ('assets/img/team/89530937_1712636665544484_1868824061006577664_n.jpg')}}" class="img-fluid" alt="">
+                        </div>
+                        <div class="member-info">
+                            <div class="social">
+                                <a href=""><i class="bi bi-twitter"></i></a>
+                                <a href=""><i class="bi bi-facebook"></i></a>
+                                <a href=""><i class="bi bi-instagram"></i></a>
+                                <a href=""><i class="bi bi-linkedin"></i></a>
+                            </div>
+                            <h4>AROUA Amira</h4>
+                            <span>Etudiant 3emm A7</span>
+                        </div>
+                    </div>
+                </div><!-- End Team Member -->
+
+
 
             </div>
 

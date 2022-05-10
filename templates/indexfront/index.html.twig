@@ -1,0 +1,108 @@
+{% extends 'base.front.html.twig' %}
+{% block body %}
+    <!-- ======= Evénements Section ======= -->
+    <section id="team" class="team">
+        <div class="container" data-aos="fade-up">
+
+            <div class="section-header">
+                <h2>Nos événements</h2>
+                <p></p>
+            </div>
+
+            <div class="row gy-5">
+
+                <div class="col-xl-4 col-md-6 d-flex" data-aos="zoom-in" data-aos-delay="600">
+                    <div class="team-member">
+                        <div class="member-img">
+                            <a href="{{ path ('AjouterP') }}" > <img src="{{  asset ('assets/img/team/instainsta1.jpg')}} "  class="img-fluid" alt=""></a>
+                        </div>
+                        <div class="member-info">
+                            <div class="social">
+                                <a href=""><i class="bi bi-twitter"></i></a>
+                                <a href=""><i class="bi bi-facebook"></i></a>
+                                <a href=""><i class="bi bi-instagram"></i></a>
+
+
+                            </div>
+                            <h4>InstaMeet</h4>
+                            <span> Un Instameet est un événement conçu et organisé par et pour des utilisateurs d’Instagram qui partagent des intérêts et des passions communes (parfois appelés « communautés Instagram ») </span>
+                        </div>
+                    </div>
+                </div><!-- End Team Member -->
+
+                <div class="col-xl-4 col-md-6 d-flex" data-aos="zoom-in" data-aos-delay="400">
+                    <div class="team-member">
+                        <div class="member-img">
+                            <img src="{{ asset ('') }}assets/img/team/hub.jpg" class="img-fluid" alt="">
+                        </div>
+                        <div class="member-info">
+                            <div class="social">
+                                <a href=""><i class="bi bi-twitter"></i></a>
+                                <a href=""><i class="bi bi-facebook"></i></a>
+                                <a href=""><i class="bi bi-instagram"></i></a>
+
+                            </div>
+                            <h4>Hub Day</h4>
+                            <span>Découvrez lors du HUBDAY Data & AI for Business, comment tirer profit des nouvelles opportunités que peuvent vous apporter l'IA, une gouvernance data-driven, ou encore le déploiement d'une CDP !</span>
+                        </div>
+                    </div>
+                </div><!-- End Team Member -->
+
+                <div class="col-xl-4 col-md-6 d-flex" data-aos="zoom-in" data-aos-delay="600">
+                    <div class="team-member">
+                        <div class="member-img">
+                            <img src="{{ asset ('assets/img/team/webinar.jpg') }}" class="img-fluid" alt="">
+                        </div>
+                        <div class="member-info">
+                            <div class="social">
+                                <a href=""><i class="bi bi-twitter"></i></a>
+                                <a href=""><i class="bi bi-facebook"></i></a>
+                                <a href=""><i class="bi bi-instagram"></i></a>
+
+                            </div>
+                            <h4>WebInar</h4>
+                            <span>Un webinar, en français webinaire, désigne une réunion collective directe via Internet. Ce mot provient de la contraction des termes web et seminar (séminaire)</span>
+                        </div>
+                    </div>
+                </div><!-- End Team Member -->
+
+                <div class="col-xl-4 col-md-6 d-flex" data-aos="zoom-in" data-aos-delay="600">
+                    <div class="team-member">
+                        <div class="member-img">
+                            <img src="{{ asset ('assets/img/team/campus.jpg') }}" class="img-fluid" alt="">
+                        </div>
+                        <div class="member-info">
+                            <div class="social">
+                                <a href=""><i class="bi bi-twitter"></i></a>
+                                <a href=""><i class="bi bi-facebook"></i></a>
+                                <a href=""><i class="bi bi-instagram"></i></a>
+
+                            </div>
+                            <h4>INSTAGRAM Creators campus</h4>
+                            <span>À partir du moment où tu as un compte Instagram, tu es un créateur. Et c'est pas moi (l'auteur de l'article) qui le dit mais Instagram dans la présentation de son Creators Campus</span>
+                        </div>
+                    </div>
+                </div><!-- End Team Member -->
+                <div class="col-xl-4 col-md-6 d-flex" data-aos="zoom-in" data-aos-delay="600">
+                    <div class="team-member">
+                        <div class="member-img">
+                            <img src="{{ asset ('assets/img/team/pin.jpg') }}" class="img-fluid" alt="">
+                        </div>
+                        <div class="member-info">
+                            <div class="social">
+                                <a href=""><i class="bi bi-twitter"></i></a>
+                                <a href=""><i class="bi bi-facebook"></i></a>
+                                <a href=""><i class="bi bi-instagram"></i></a>
+
+                            </div>
+                            <h4>Festival PINTEREST</h4>
+                            <span>pinterest annonce la deuxième édition de son Festival mondial annuel des Créateurs,</span>
+                        </div>
+                    </div>
+                </div><!-- End Team Member -->
+
+            </div>
+
+        </div>
+    </section><!-- End Team Section -->
+{% endblock %}

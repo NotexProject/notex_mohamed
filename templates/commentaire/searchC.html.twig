@@ -1,0 +1,75 @@
+{% extends 'base.back.html.twig' %}
+ {% block dashboard %}
+     <!-- Dashboard -->
+     <!-- Dashboard -->
+     <li class="menu-item active">
+         <a href="{{ asset ('afficheC') }}" class="menu-link">
+             <i class="menu-icon tf-icons bx bx-home-circle"></i>
+             <div data-i18n="Analytics">Gestion des commentaire</div>
+         </a>
+     </li>
+     <li class="menu-item active">
+         <a href="{{ asset ('afficheE') }}" class="menu-link">
+             <i class="menu-icon tf-icons bx bx-home-circle"></i>
+             <div data-i18n="Analytics">Gestion des évènements</div>
+         </a>
+     </li>
+     <li class="menu-item active">
+         <a href="{{ asset ('afficheP') }}" class="menu-link">
+             <i class="menu-icon tf-icons bx bx-home-circle"></i>
+             <div data-i18n="Analytics">Gestion des participation</div>
+         </a>
+     </li>
+ {% endblock %}
+
+{% block profilbar %}
+    {{ form_start(form) }}
+
+    <div class="form-row align-items-end" >
+        <div class="col">
+            {{ form_row(form.nickname) }}
+        </div>
+
+        <div class="col">
+            <div class="form-group">
+                <button type="submit" class="btn btn-success">Rechercher</button>
+            </div>
+        </div>
+    </div>
+    {{ form_end(form) }}
+
+{% endblock %}
+
+{% block content  %}
+    <div class="card">
+        <h5 class="card-header">Liste des commentaire </h5>
+        <div class="table-responsive text-nowrap">
+            <table class="table">
+                <thead>
+                <tr>
+                    <th> ID</th>
+                    <th>contenue</th>
+                    <th>email</th>
+                    <th>nickname</th>
+                    <th>date_de_creation</th>
+                    <th>action</th>
+                </tr>
+                </thead>
+                <tbody class="table-border-bottom-0">
+                <tr {% for c in comments %}>
+                    <td>{{ c.id }}</td>
+                    <td>{{ c.content }}</td>
+                    <td>{{ c.email }}</td>
+                    <td>{{ c.nickname }}</td>
+                    <td>{{c.dateComment|date('d-m-Y')}}</td>
+                    <td> <a href="{{ path('deleteComment',{'id':c.id}) }}"> Delete</a> <a href="{{ path('UpdateC',{'id':c.id}) }}"> update</a> </td>
+
+
+                </tr {% endfor %}>
+
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+{% endblock %}
